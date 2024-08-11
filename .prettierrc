@@ -3,7 +3,7 @@
   "semi": true,
   "singleQuote": false,
   "trailingComma": "all",
-  "tabWidth": 4,
+  "tabWidth": 2,
   "arrowParens": "always",
   "printWidth": 130,
   "plugins": ["prettier-plugin-tailwindcss", "@trivago/prettier-plugin-sort-imports"],

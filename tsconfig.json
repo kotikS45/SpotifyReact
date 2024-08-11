@@ -31,8 +31,9 @@
             "pages/*": ["pages/*"],
             "utils/*": ["utils/*"],
             "interfaces/*": ["interfaces/*"],
-            
-        }
+            "partials/*": ["partials/*"]
+        },
+        "allowSyntheticDefaultImports": true
     },
     "include": ["src"],
     "references": [{ "path": "./tsconfig.node.json" }]
