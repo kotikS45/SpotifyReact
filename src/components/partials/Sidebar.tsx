@@ -143,8 +143,8 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                             <SidebarLinkGroupMenu
                                                 open={open}
                                                 links={[
-                                                    { to: "/artists/list", label: "List" },
-                                                    { to: "/artists/create", label: "Create" },
+                                                    { to: "admin/artists/list", label: "List" },
+                                                    { to: "admin/artists/create", label: "Create" },
                                                     // { to: "/ecommerce/invoices", label: "Invoices" },
                                                 ]}
                                             />
@@ -171,7 +171,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                             <SidebarLinkGroupMenu open={open} links={[{ to: "/albums/List", label: "List" }]} />
                                             <SidebarLinkGroupMenu
                                                 open={open}
-                                                links={[{ to: "/albums/create", label: "Create" }]}
+                                                links={[{ to: "admin/albums/create", label: "Create" }]}
                                             />
                                         </>
                                     )}
@@ -195,11 +195,11 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                             </SidebarLinkGroupTitle>
                                             <SidebarLinkGroupMenu
                                                 open={open}
-                                                links={[{ to: "/tracks/list", label: "List" }]}
+                                                links={[{ to: "admin/tracks/list", label: "List" }]}
                                             />
                                             <SidebarLinkGroupMenu
                                                 open={open}
-                                                links={[{ to: "/tracks/create", label: "Create" }]}
+                                                links={[{ to: "admin/tracks/create", label: "Create" }]}
                                             />
                                         </>
                                     )}
