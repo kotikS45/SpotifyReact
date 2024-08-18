@@ -3,6 +3,7 @@ import Button from "components/ui/Button";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { useDeleteArtistMutation } from "services/artist";
+import { API_URL } from "utils/envData";
 
 interface ArtistsListVm {
   artists: IArtist[] | undefined;
@@ -10,6 +11,7 @@ interface ArtistsListVm {
 
 const ArtistsList: React.FC<ArtistsListVm> = (props) => {
   const navigate = useNavigate();
+  const imageSrc = API_URL + "/Images/200_";
 
   const { artists } = props;
   const [deleteArtist] = useDeleteArtistMutation();
@@ -23,10 +25,10 @@ const ArtistsList: React.FC<ArtistsListVm> = (props) => {
                         #
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Назва
+                        Image
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        <span className="sr-only">Кнопки</span>
+                        Назва
                     </th>
                 </tr>
             </thead>
@@ -34,6 +36,9 @@ const ArtistsList: React.FC<ArtistsListVm> = (props) => {
                 {artists?.map((artist, index) => (
                     <tr key={artist.id} className="bg-white border-b hover:bg-gray-50 ">
                         <td className="px-6 py-4">{++index}</td>
+                        <td className="px-6 py-4">
+                            <img src={imageSrc + artist.image}/>
+                        </td>
                         <td className="px-6 py-4">{artist.name}</td>
                         <td className="px-6 py-4 text-right space-x-5">
                             <Button
