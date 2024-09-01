@@ -1,42 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import { getTrackById } from '../services/MusicFlowService.js';
+import React, { useState, useEffect, useRef } from 'react';
+import { getTrackById, getTracks } from '../services/MusicFlowService.tsx';
 
-const MusicPlayer = () => {
-    const [playing, setPlaying] = useState(false);
-    const [track, setTrack] = useState(null);
-    const audioRef = React.createRef();
+const MusicPlayer: React.FC = () => {
+    const [tracks, setTracks] = useState<{
+        id: number;
+        duration: number;
+        albumId: number;
+        name: string;
+        path: string;
+        genres: { id: number; name: string }[];
+    }[]>([]);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    const audioRef = useRef<HTMLAudioElement>(null);
+
+    const fetchTracks = async () => {
+        try {
+            const trackData = await getTracks();
+            setTracks(trackData);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching tracks:', error);
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchTrack = async () => {
-            const trackId = 1; // Вкажіть ID треку, який ви хочете отримати
-            const trackData = await getTrackById(trackId);
-            if (trackData) {
-                setTrack(trackData);
-            }
-        };
-
-        fetchTrack();
+        fetchTracks();
     }, []);
 
-    const handlePlayPause = () => {
-        if (playing) {
-            audioRef.current.pause();
-        } else {
-            audioRef.current.play();
-        }
-        setPlaying(!playing);
+    const handleNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % tracks.length);
     };
+
+    const handlePrevious = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + tracks.length) % tracks.length);
+    };
+
+    const currentTrack = tracks[currentIndex];
+    const audioSrc = currentTrack ? `http://localhost:5158/audio/${currentTrack.path}` : '';
+
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.src = audioSrc;
+        }
+    }, [audioSrc]);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <div className="music-player">
-            {track ? (
+            {currentTrack ? (
                 <div>
-                    <h3>{track.name}</h3>
-                    <p>Duration: {track.duration} seconds</p>
-                    <p>Genres: {track.genres.map(genre => genre.name).join(', ')}</p>
-                    <audio ref={audioRef} src={track.path} />
-                    <button onClick={handlePlayPause}>
-                        {playing ? 'Pause' : 'Play'}
-                    </button>
+                    <h3>{currentTrack.name}</h3>
+                    <p>Жанр: {currentTrack.genres.map(genre => genre.name).join(', ')}</p>
+                    <audio ref={audioRef} controls />
+                    <div className="controls">
+                        <button onClick={handlePrevious} disabled={tracks.length <= 1}>←</button>
+                        <button onClick={handleNext} disabled={tracks.length <= 1}>→</button>
+                    </div>
                 </div>
             ) : (
                 <p>No track is playing</p>
