@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@headlessui/react": "^2.0.4",
     "@hookform/resolvers": "^3.9.0",
     "@reduxjs/toolkit": "^2.2.7",
@@ -26,11 +25,6 @@
     "react-toastify": "^10.0.5",
     "tailwind-merge": "^2.4.0",
     "zod": "^3.23.8"
-=======
-    "axios": "^1.7.7",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
->>>>>>> 443875bddacf063e22af0212e51dd00831f1b0b8
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",

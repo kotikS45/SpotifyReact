@@ -5,6 +5,8 @@ import { useState } from "react";
 import Header from "../partials/Header.tsx";
 import Sidebar from "../partials/Sidebar.tsx";
 
+import MusicPlayer from "components/MusicPlayer.tsx";
+
 const AdminLayout = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -15,6 +17,7 @@ const AdminLayout = () => {
                 <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
                 <main className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto scrollbar scrollbar-thumb-sky-700 scrollbar-track-sky-300 overflow-y-scroll">
                     <Outlet />
+                    <MusicPlayer />
                 </main>
             </div>
         </div>
