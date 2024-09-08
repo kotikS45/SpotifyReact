@@ -97,7 +97,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                 <IconDashboard className="w-8 h-8 text-white" />
                             </div>
                             <span className="text-xl font-bold ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 duration-200">
-                                Dashboard
+                                MusicFlow
                             </span>
                         </div>
                     </NavLink>
