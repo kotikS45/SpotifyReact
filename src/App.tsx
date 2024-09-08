@@ -1,21 +1,19 @@
-//import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
-import React from 'react';
-import './App.css';  // Припустимо, що у вас є CSS-стилі
-import MusicPlayer from './components/MusicPlayer.tsx';  // Імпорт компоненту
+import { Route, Routes } from "react-router-dom";
+import AdminLayout from "./components/layouts/AdminLayout.tsx";
+import ArtistPage from "pages/admin/artist/ArtistPage.tsx"; 
+import ArtistCreatePage from 'pages/admin/artist/ArtistCreatePage.tsx';
 
-const App: React.FC = () => {
+const App = () => {
   return (
-      <div className="App">
-          <header className="App-header">
-              <h1>Music Flow</h1>
-          </header>
-          <main>
-          <MusicPlayer />  {/* Додаємо програвач на сторінку */}
-        </main>
-      </div>
+      <Routes>
+          <Route path="/" element={<AdminLayout />}>
+              <Route/>
+              <Route path="admin/artists">
+                <Route path="list" element={<ArtistPage />} />
+                <Route path="create" element={<ArtistCreatePage />} />
+              </Route>
+          </Route>
+      </Routes>
   );
 }
-
-export default App;
+export default App
