@@ -1,11 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #20232a;
+.bg-auth {
+  background-image: url('/assets/background_auth.png');
 }
 
 .music-player {

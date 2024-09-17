@@ -16,6 +16,8 @@ export default {
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+        raleway: ['Raleway', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1.5" }],
@@ -28,6 +30,7 @@ export default {
         "4xl": ["2.25rem", { lineHeight: "1.25", letterSpacing: "-0.02em" }],
         "5xl": ["3rem", { lineHeight: "1.25", letterSpacing: "-0.02em" }],
         "6xl": ["3.75rem", { lineHeight: "1.2", letterSpacing: "-0.02em" }],
+        '48px': '48px',
       },
       screens: {
         xs: "480px",
@@ -42,6 +45,7 @@ export default {
         60: "15rem",
         72: "18rem",
         80: "20rem",
+        448: "448px"
       },
       maxWidth: {
         "8xl": "88rem",
@@ -53,7 +57,11 @@ export default {
       animation: {
         bounce: "bounce 1s linear infinite",
       },
-
+      colors: {
+        loginTextColor1: '#47172C',
+        loginTextColor2: '#B60A31',
+        loginEditTextBg: '#2B2B2B',
+      },
     },
   },
   plugins: [
