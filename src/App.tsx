@@ -1,7 +1,10 @@
+import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import AdminLayout from "./components/layouts/AdminLayout.tsx";
 import ArtistPage from "pages/admin/artist/ArtistPage.tsx"; 
 import ArtistCreatePage from 'pages/admin/artist/ArtistCreatePage.tsx';
+import AccountLayout from "components/layouts/AccountLayout.tsx";
+import LoginPage from "pages/auth/LoginPage.tsx";
 
 const App = () => {
   return (
@@ -13,6 +16,11 @@ const App = () => {
                 <Route path="create" element={<ArtistCreatePage />} />
               </Route>
           </Route>
+
+          
+          <Route path="/auth/" element={<AccountLayout />}>
+                <Route path="login" element={<LoginPage />} />
+            </Route>
       </Routes>
   );
 }

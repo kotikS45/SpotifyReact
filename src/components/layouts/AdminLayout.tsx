@@ -5,8 +5,6 @@ import { useState } from "react";
 import Header from "../partials/Header.tsx";
 import Sidebar from "../partials/Sidebar.tsx";
 
-import MusicPlayer from "components/MusicPlayer.tsx";
-
 const AdminLayout = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 

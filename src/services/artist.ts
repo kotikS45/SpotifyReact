@@ -19,11 +19,22 @@ export const artistApi = createApi({
     }),
 
     createArtist: builder.mutation<void, IArtistCreate>({
-      query: (artist) => ({
-        url: "create",
-        method: "POST",
-        body: artist,
-      }),
+      query: (artist) => {
+        const formData = new FormData();
+        formData.append("Name", artist.name);
+        formData.append("Image", artist.image); // додаємо зображення як файл
+    
+        return {
+          url: "create",
+          method: "POST",
+          body: formData,  // відправляємо як FormData
+        };
+      },
+      // query: (artist) => ({
+      //   url: "create",
+      //   method: "POST",
+      //   body: artist,
+      // }),
       invalidatesTags: ["Artists"],
     }),
 

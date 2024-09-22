@@ -1,6 +1,6 @@
 import { IconCirclePlus } from "@tabler/icons-react";
 import ArtistsList from "components/partials/artist/ArtistsList";
-import Button from "components/ui/Button";
+import { Button } from "components/ui/Button";
 import PageTitle from "components/ui/PageTitle";
 import { Link } from "react-router-dom";
 import { useGetArtistsQuery } from "services/artist";

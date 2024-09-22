@@ -1,5 +1,5 @@
 import { IArtist } from "interfaces/artist";
-import Button from "components/ui/Button";
+import { Button } from "components/ui/Button";
 import { IconEdit, IconTrash } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { useDeleteArtistMutation } from "services/artist";
