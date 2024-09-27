@@ -28,6 +28,7 @@ const LoginPage: React.FC = () => {
         const res = await emailLogin({ email, password });
 
         if (res && "data" in res && res.data) {
+            console.log(res.data.token);
             setUser(res.data.token);
             showToast(`Авторизація успішна!`, "success");
         } else {
@@ -39,6 +40,7 @@ const LoginPage: React.FC = () => {
         const res = await googleLogin({
             credential: credentialResponse.credential || "",
         });
+        console.log(res);
 
         if (res && "data" in res && res.data) {
             setUser(res.data.token);
