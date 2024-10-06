@@ -155,6 +155,11 @@ const RegisterPage: React.FC = () => {
                         <hr className="w-[100%]" style={{ borderTop: '1px solid white' }}/>
                     </div>
                 </div>
+                <div className="flex justify-center pt-9 pb-9">
+                    <span className="text-white text-[18px]">Already have an account?</span>
+                    &nbsp; { }
+                    <a className="text-loginTextColor2 text-[18px] m1-2" href="/auth/login">Sign in</a>
+                </div>
             </div>
         </div>
     );

@@ -134,7 +134,7 @@ const LoginPage: React.FC = () => {
                 <div className="flex justify-center pt-9 pb-9">
                     <span className="text-white text-[18px]">Need an account?</span>
                     &nbsp; { }
-                    <a className="text-loginTextColor2 text-[18px] m1-2" href="">Sign up</a>
+                    <a className="text-loginTextColor2 text-[18px] m1-2" href="/auth/register">Sign up</a>
                 </div>
             </div>
         </div>

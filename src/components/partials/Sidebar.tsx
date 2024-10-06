@@ -1,4 +1,4 @@
-import { IconAlbum, IconDashboard, IconHome, IconMicrophone2, IconMusic } from "@tabler/icons-react";
+import { IconAlbum, IconDashboard, IconHome, IconMicrophone2, IconMusic, IconUser } from "@tabler/icons-react";
 import ChevronDown from "components/partials/sidebar/ChevronDown";
 import ExpandCollapseButton from "components/partials/sidebar/ExpandCollapseButton";
 import SidebarLink from "components/partials/sidebar/SidebarLink";
@@ -200,6 +200,34 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                             <SidebarLinkGroupMenu
                                                 open={open}
                                                 links={[{ to: "admin/tracks/create", label: "Create" }]}
+                                            />
+                                        </>
+                                    )}
+                                </SidebarLinkGroup>
+
+                                {/*/!* Login *!/*/}
+                                <SidebarLinkGroup activecondition={pathname.includes("auth")}>
+                                    {(handleClick, open) => (
+                                        <>
+                                            <SidebarLinkGroupTitle
+                                                href="#"
+                                                icon={<IconUser />}
+                                                isActive={pathname.includes("auth")}
+                                                handleClick={(e) => {
+                                                    e.preventDefault();
+                                                    sidebarExpanded ? handleClick() : setSidebarExpanded(true);
+                                                }}
+                                            >
+                                                Auth
+                                                <ChevronDown open={open} />
+                                            </SidebarLinkGroupTitle>
+                                            <SidebarLinkGroupMenu
+                                                open={open}
+                                                links={[{ to: "auth/login", label: "Login" }]}
+                                            />
+                                            <SidebarLinkGroupMenu
+                                                open={open}
+                                                links={[{ to: "auth/register", label: "Register" }]}
                                             />
                                         </>
                                     )}
