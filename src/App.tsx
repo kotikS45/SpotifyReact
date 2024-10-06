@@ -5,6 +5,7 @@ import ArtistPage from "pages/admin/artist/ArtistPage.tsx";
 import ArtistCreatePage from 'pages/admin/artist/ArtistCreatePage.tsx';
 import AccountLayout from "components/layouts/AccountLayout.tsx";
 import LoginPage from "pages/auth/LoginPage.tsx";
+import RegisterPage from "pages/auth/RegisterPage.tsx";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
 
           
           <Route path="/auth/" element={<AccountLayout />}>
+                <Route path="register" element={<RegisterPage/>}/>
                 <Route path="login" element={<LoginPage />} />
             </Route>
       </Routes>

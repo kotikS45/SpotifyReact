@@ -72,7 +72,7 @@ const LoginPage: React.FC = () => {
             <div className="absolute inset-0 bg-black opacity-80 z-0 rounded-3xl"/>
             <div className="flex pt-16 pl-14 pr-14 relative z-10">
                 <div>
-                    <img width={201} height={160} src="/assets/Logo.png" alt="logo"/>
+                    <img className="min-w-[201px] min-h-[160px]" src="/assets/Logo.png" alt="logo"/>
                 </div>
                 <div className="font-raleway text-48px font-extrabold leading-[56.35px] text-left mt-auto mb-auto pl-6">
                     <span className="text-loginTextColor1">MUSIC</span><span className="text-loginTextColor2">FLOW</span>
