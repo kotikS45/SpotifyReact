@@ -1,15 +1,13 @@
 import { NavLink } from "react-router-dom";
-import { SubscriptionPlan } from "./PaymentPage";
 
 interface ISubscriptionCardProps {
   name: string,
   price: number,
   description: string[],
-  url: string,
-  plan: SubscriptionPlan,
+  url: string
 }
 
-const SubscriptionCard: React.FC<ISubscriptionCardProps> = ({name, price, description, url, plan}) => {
+const SubscriptionCard: React.FC<ISubscriptionCardProps> = ({name, price, description, url}) => {
   return (
     <div className="w-[354px] h-[438px] bg-black rounded-[14px] relative shadow-[0_0_10px_0px_#F41A30]">
       <div className="bg-gradient-to-r from-[#59072F] to-[#DA0833] relative flex items-center justify-center w-full h-[70px] rounded-[14px] shadow-red shadow-sm">
