@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom";
+import { SubscriptionPlan } from "./PaymentPage";
 
 interface ISubscriptionCardProps {
   name: string,
   price: number,
   description: string[],
   url: string,
+  plan: SubscriptionPlan,
 }
 
-const SubscriptionCard: React.FC<ISubscriptionCardProps> = ({name, price, description, url}) => {
+const SubscriptionCard: React.FC<ISubscriptionCardProps> = ({name, price, description, url, plan}) => {
   return (
     <div className="w-[354px] h-[438px] bg-black rounded-[14px] relative shadow-[0_0_10px_0px_#F41A30]">
       <div className="bg-gradient-to-r from-[#59072F] to-[#DA0833] relative flex items-center justify-center w-full h-[70px] rounded-[14px] shadow-red shadow-sm">
@@ -23,7 +25,7 @@ const SubscriptionCard: React.FC<ISubscriptionCardProps> = ({name, price, descri
             <li key={index} className="text-white font-roboto font-normal text-sm leading-[18px]">{item}</li>
           ))}
         </ul>
-        <NavLink to={url} className="absolute bottom-[38px] w-[196px] h-[54px] rounded-[14px] bg-gradient-to-r from-[#59072F] to-[#DA0833] hover:bg-none flex justify-center items-center">
+        <NavLink to={`${url}?plan=${name}`} className="absolute bottom-[38px] w-[196px] h-[54px] rounded-[14px] bg-gradient-to-r from-[#59072F] to-[#DA0833] hover:bg-none flex justify-center items-center">
           <span className="font-roboto font-normal text-xl text-white">Get premium</span>
         </NavLink>
       </div>

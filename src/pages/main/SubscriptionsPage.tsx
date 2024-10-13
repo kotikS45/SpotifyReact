@@ -1,3 +1,4 @@
+import { SubscriptionPlan } from "./PaymentPage";
 import SubscriptionCard from "./SubscriptionCard";
 import Table from "./table/Table";
 
