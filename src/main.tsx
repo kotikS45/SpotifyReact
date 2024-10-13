@@ -1,4 +1,3 @@
-import "css/index.css";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";

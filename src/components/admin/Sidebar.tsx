@@ -1,10 +1,10 @@
 import { IconAlbum, IconDashboard, IconHome, IconMicrophone2, IconMusic, IconUser } from "@tabler/icons-react";
-import ChevronDown from "components/partials/sidebar/ChevronDown";
-import ExpandCollapseButton from "components/partials/sidebar/ExpandCollapseButton";
-import SidebarLink from "components/partials/sidebar/SidebarLink";
-import SidebarLinkGroup from "components/partials/sidebar/SidebarLinkGroup";
-import SidebarLinkGroupMenu from "components/partials/sidebar/SidebarLinkGroupMenu";
-import SidebarLinkGroupTitle from "components/partials/sidebar/SidebarLinkGroupTitle";
+import ChevronDown from "components/admin/sidebar/ChevronDown";
+import ExpandCollapseButton from "components/admin/sidebar/ExpandCollapseButton";
+import SidebarLink from "components/admin/sidebar/SidebarLink";
+import SidebarLinkGroup from "components/admin/sidebar/SidebarLinkGroup";
+import SidebarLinkGroupMenu from "components/admin/sidebar/SidebarLinkGroupMenu";
+import SidebarLinkGroupTitle from "components/admin/sidebar/SidebarLinkGroupTitle";
 import { NavLink, useLocation } from "react-router-dom";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -143,8 +143,8 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                             <SidebarLinkGroupMenu
                                                 open={open}
                                                 links={[
-                                                    { to: "admin/artists/list", label: "List" },
-                                                    { to: "admin/artists/create", label: "Create" },
+                                                    { to: "/admin/artists/list", label: "List" },
+                                                    { to: "/admin/artists/create", label: "Create" },
                                                     // { to: "/ecommerce/invoices", label: "Invoices" },
                                                 ]}
                                             />
@@ -168,10 +168,10 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                                 Albums
                                                 <ChevronDown open={open} />
                                             </SidebarLinkGroupTitle>
-                                            <SidebarLinkGroupMenu open={open} links={[{ to: "/albums/List", label: "List" }]} />
+                                            <SidebarLinkGroupMenu open={open} links={[{ to: "/admin/albums/List", label: "List" }]} />
                                             <SidebarLinkGroupMenu
                                                 open={open}
-                                                links={[{ to: "admin/albums/create", label: "Create" }]}
+                                                links={[{ to: "/admin/albums/create", label: "Create" }]}
                                             />
                                         </>
                                     )}
@@ -195,11 +195,11 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                             </SidebarLinkGroupTitle>
                                             <SidebarLinkGroupMenu
                                                 open={open}
-                                                links={[{ to: "admin/tracks/list", label: "List" }]}
+                                                links={[{ to: "/admin/tracks/list", label: "List" }]}
                                             />
                                             <SidebarLinkGroupMenu
                                                 open={open}
-                                                links={[{ to: "admin/tracks/create", label: "Create" }]}
+                                                links={[{ to: "/admin/tracks/create", label: "Create" }]}
                                             />
                                         </>
                                     )}
@@ -223,11 +223,11 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                             </SidebarLinkGroupTitle>
                                             <SidebarLinkGroupMenu
                                                 open={open}
-                                                links={[{ to: "auth/login", label: "Login" }]}
+                                                links={[{ to: "/auth/login", label: "Login" }]}
                                             />
                                             <SidebarLinkGroupMenu
                                                 open={open}
-                                                links={[{ to: "auth/register", label: "Register" }]}
+                                                links={[{ to: "/auth/register", label: "Register" }]}
                                             />
                                         </>
                                     )}

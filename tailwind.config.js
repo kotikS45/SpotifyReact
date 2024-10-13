@@ -18,6 +18,7 @@ export default {
         inter: ["Inter", "sans-serif"],
         raleway: ['Raleway', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1.5" }],
@@ -72,6 +73,18 @@ export default {
       addVariant("sidebar-expanded", ({ modifySelectors, separator }) => {
         modifySelectors(({ className }) => `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`);
       });
+    }),
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        '.no-scrollbar': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+        },
+        '.no-scrollbar::-webkit-scrollbar': {
+          display: 'none',
+        },
+      };
+      addUtilities(newUtilities);
     }),
   ],
 };
