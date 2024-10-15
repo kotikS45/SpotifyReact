@@ -10,6 +10,7 @@ import Layout from "components/main/Layout.tsx";
 import BackgroundSetter from "components/BackgroundSetter";
 import SubscriptionsPage from "pages/main/SubscriptionsPage";
 import PaymentPage from "pages/main/PaymentPage";
+import GenresPage from "pages/main/GenresPage";
 
 const App = () => {
   return (
@@ -28,7 +29,7 @@ const App = () => {
         <Route path="account" element={<></>}/>
         
         <Route path="friends" element={<></>}/>
-        <Route path="file" element={<></>}/>
+        <Route path="genres" element={<GenresPage/>}/>
         <Route path="notification" element={<></>}/>
         
         <Route path="premium" element={<SubscriptionsPage/>}/>

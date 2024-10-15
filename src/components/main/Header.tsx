@@ -10,7 +10,7 @@ const Header = () => {
         <header className="sticky top-0 flex items-center justify-end ml-[10px] px-[10px] w-[100%] h-[78px] bg-black rounded-b-[14px] opacity-85">
           <div className="flex ml-auto mr-auto">
             <HeaderLink icon={<Friends/>} to="/friends"/>
-            <HeaderLink icon={<File/>} to="/file"/>
+            <HeaderLink icon={<File/>} to="/genres"/>
             <HeaderLink icon={<Notifications/>} to="/notification"/>
           </div>
           <div className="flex items-center">
