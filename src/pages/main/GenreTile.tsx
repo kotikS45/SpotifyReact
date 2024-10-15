@@ -1,5 +1,5 @@
 import GenreWaveBackground from "./GenreWaveBackground";
-
+import { colorSelectorDark, colorSelector } from "utils/colorSelector";
 
 interface IGenreTileProps {
   title: string,
@@ -8,10 +8,12 @@ interface IGenreTileProps {
 
 const GenreTile: React.FC<IGenreTileProps> = ({ title, imageUrl }) => {
   
+console.log(title + " " + colorSelectorDark(title));
+
   return (
     <div className="w-[310px] h-[182px] rounded-[16px] flex">
       <div className="w-1/2">
-        <GenreWaveBackground color={stringToColor(title)} className="absolute z-0 rounded-[16px]"/>
+        <GenreWaveBackground color={colorSelectorDark(title)} className="absolute z-0 rounded-l-[16px]"/>
         <h4 className="font-roboto font-semibold text-2xl text-white py-[25px] pl-[24px] z-10 absolute">{title}</h4>
       </div>
       <div className="w-1/2">
@@ -22,20 +24,3 @@ const GenreTile: React.FC<IGenreTileProps> = ({ title, imageUrl }) => {
 }
 
 export default GenreTile
-
-function stringToColor(str: string): string {
-  // Хешування рядка
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  // Перетворення хешу в HEX колір
-  let color = "#";
-  for (let i = 0; i < 3; i++) {
-    const value = (hash >> (i * 8)) & 0xFF;
-    color += ("00" + value.toString(16)).slice(-2);
-  }
-
-  return color;
-}

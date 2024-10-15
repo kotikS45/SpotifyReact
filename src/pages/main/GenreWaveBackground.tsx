@@ -1,9 +1,8 @@
 const GenreWaveBackground: React.FC<{ color: string; className?: string }> = ({ color, className }) => {
   const svg = `
-    <svg width="159" height="183" viewBox="0 0 159 183" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0.109589 182.18C0.109589 173.44 2.3496 165.53 5.8696 157.53C18.5496 128.76 18.6896 104.35 8.5896 77.52C-14.6904 19.48 16.9896 0.350017 20.1596 0.330017H123.22H143.07C151.65 0.330017 158.61 7.29001 158.61 15.87V167.4C158.61 175.98 151.65 182.94 143.07 182.94H0.0996094V182.18H0.109589Z" 
+    <svg width="173" height="183" viewBox="0 0 173 183" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M152.749 183V182.23C152.749 173.49 154.979 165.58 158.509 157.58C171.189 128.81 171.329 104.4 161.229 77.57C138.009 19.69 169.449 0.510015 172.769 0.390015H15.9893C7.40926 0.390015 0.449219 7.34999 0.449219 15.93V167.46C0.449219 176.04 7.40926 183 15.9893 183H152.749Z"
       fill="${color}"
-      transform="scale(-1, 1) translate(-159, 0)" 
       />
     </svg>
   `;
@@ -14,7 +13,7 @@ const GenreWaveBackground: React.FC<{ color: string; className?: string }> = ({ 
     <div
       className={className}
       style={{
-        width: '170px',
+        width: '176px',
         height: '182px',
         backgroundImage,
         backgroundSize: 'cover',
