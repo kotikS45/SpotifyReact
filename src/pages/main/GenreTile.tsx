@@ -1,5 +1,5 @@
 import GenreWaveBackground from "./GenreWaveBackground";
-import { colorSelectorDark, colorSelector } from "utils/colorSelector";
+import { colorSelectorDark } from "utils/colorSelector";
 
 interface IGenreTileProps {
   title: string,

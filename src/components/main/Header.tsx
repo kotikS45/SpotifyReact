@@ -7,7 +7,7 @@ import HeaderLink from "./link/HeaderLink";
 
 const Header = () => {
     return (
-        <header className="sticky top-0 flex items-center justify-end ml-[10px] px-[10px] w-[100%] h-[78px] bg-black rounded-b-[14px] opacity-85">
+        <header className="sticky z-30 top-0 flex items-center justify-end ml-[10px] px-[10px] w-[100%] h-[78px] bg-black rounded-b-[14px] opacity-85">
           <div className="flex ml-auto mr-auto">
             <HeaderLink icon={<Friends/>} to="/friends"/>
             <HeaderLink icon={<File/>} to="/genres"/>

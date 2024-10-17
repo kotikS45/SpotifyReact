@@ -11,6 +11,7 @@ import BackgroundSetter from "components/BackgroundSetter";
 import SubscriptionsPage from "pages/main/SubscriptionsPage";
 import PaymentPage from "pages/main/PaymentPage";
 import GenresPage from "pages/main/GenresPage";
+import PlaylistsPage from "pages/main/PlaylistsPage";
 
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
         <Route path="favorite" element={<></>}/>
 
         <Route path="albums" element={<></>}/>
-        <Route path="playlists" element={<></>}/>
+        <Route path="playlists" element={<PlaylistsPage/>}/>
         <Route path="forartist" element={<></>}/>
         <Route path="account" element={<></>}/>
         
