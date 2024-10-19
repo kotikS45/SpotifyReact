@@ -12,6 +12,7 @@ import SubscriptionsPage from "pages/main/SubscriptionsPage";
 import PaymentPage from "pages/main/PaymentPage";
 import GenresPage from "pages/main/GenresPage";
 import PlaylistsPage from "pages/main/PlaylistsPage";
+import FavoritePage from "pages/main/FavoritePage";
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
 
       <Route path="/" element={<Layout/>}>
         <Route path="library" element={<></>}/>
-        <Route path="favorite" element={<></>}/>
+        <Route path="favorite" element={<FavoritePage/>}/>
 
         <Route path="albums" element={<></>}/>
         <Route path="playlists" element={<PlaylistsPage/>}/>

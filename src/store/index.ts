@@ -6,6 +6,8 @@ import { artistApi } from "services/artist";
 import { genreApi } from "services/genre";
 import { playlistApi } from "services/playlist";
 import userReducer from "store/slice/userSlice.ts";
+import { trackApi } from "services/track";
+import { likeApi } from "services/like";
 
 export const store = configureStore({
     reducer: {
@@ -13,14 +15,18 @@ export const store = configureStore({
         [userApi.reducerPath]: userApi.reducer,
         [artistApi.reducerPath]: artistApi.reducer,
         [genreApi.reducerPath]: genreApi.reducer,
-        [playlistApi.reducerPath]: playlistApi.reducer
+        [playlistApi.reducerPath]: playlistApi.reducer,
+        [trackApi.reducerPath]: trackApi.reducer,
+        [likeApi.reducerPath]: likeApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
           userApi.middleware,
           artistApi.middleware,
           genreApi.middleware,
-          playlistApi.middleware
+          playlistApi.middleware,
+          trackApi.middleware,
+          likeApi.middleware,
         ),
 });
 

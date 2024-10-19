@@ -12,9 +12,7 @@ const PlaylistsPage = () => {
       <div className="w-full relative">
         <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-l-[14px]" />
         <div className="w-full relative z-10 flex flex-row">
-          <div className="w-[310px] h-[260px]">
-
-          </div>
+          <img src="assets/Playlist.png" alt="playlist" className="pl-[55px] pt-[16px] pb-[40px] pr-[38px]"/>
           <div className="flex flex-col">
             <span className="font-roboto font-semibold text-white text-base pt-[65px]">Playlist</span>
             <h2 className="font-montserrat font-bold text-white text-7xl">Your playlists</h2>
