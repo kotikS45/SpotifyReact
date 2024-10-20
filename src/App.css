@@ -72,3 +72,34 @@ h1{
   background-color: #555555;
   cursor: not-allowed;
 }
+
+input[type="range"] {
+  -webkit-appearance: none; /* Вимкнути стандартний стиль для WebKit браузерів */
+  appearance: none; /* Вимкнути стандартний стиль */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Вимкнути стандартний стиль для WebKit браузерів */
+  appearance: none; /* Вимкнути стандартний стиль */
+  width: 10px; /* Ширина крапки */
+  height: 10px; /* Висота крапки */
+  background: linear-gradient(90deg, #A30028 0%, #FB2645 100%);
+  border-radius: 50%; /* Крапка кругла */
+  cursor: pointer; /* Курсор при наведені */
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 10px; /* Ширина крапки */
+  height: 10px; /* Висота крапки */
+  background: linear-gradient(90deg, #A30028 0%, #FB2645 100%);
+  border-radius: 50%; /* Крапка кругла */
+  cursor: pointer; /* Курсор при наведені */
+}
+
+input[type="range"]::-ms-thumb {
+  width: 10px; /* Ширина крапки */
+  height: 10px; /* Висота крапки */
+  background: linear-gradient(90deg, #A30028 0%, #FB2645 100%);
+  border-radius: 50%; /* Крапка кругла */
+  cursor: pointer; /* Курсор при наведені */
+}

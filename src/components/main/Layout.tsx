@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "./Sidebar.tsx";
 import Header from "./Header.tsx";
 import { Outlet } from "react-router-dom";
+import Player from "./player/index.tsx";
 
 const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -15,6 +16,7 @@ const Layout = () => {
             <Outlet />
           </main>
         </div>
+        <Player/>
     </div>
   )
 }

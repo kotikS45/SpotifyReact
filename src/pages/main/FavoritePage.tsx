@@ -5,11 +5,17 @@ import PlayerMore from "../../components/main/icon/PlayerMore"
 import PlayerSearch from "../../components/main/icon/PlayerSearch"
 import List from "./list/List"
 import { useGetTracksQuery } from "services/track"
+import { ITrackFilter } from "interfaces/track"
 
 
 const FavoritePage = () => {
 
-  const { data: tracks } = useGetTracksQuery();
+  const filter: ITrackFilter = {
+    PageIndex: 0,
+    PageSize: 15,
+  }
+
+  const { data } = useGetTracksQuery(filter);
   
   return (
     <div>
@@ -42,7 +48,7 @@ const FavoritePage = () => {
         <div className="w-full relative z-10">
           <div className="flex flex-col p-[54px]">
             
-            {tracks ? <List tracks={tracks}/> : null}
+            {data ? <List tracks={data?.data}/> : null}
 
           </div>
         </div>

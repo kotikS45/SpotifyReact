@@ -29,3 +29,18 @@ export interface ITrackUpdate {
   image: File,
   genres: IGenre[],
 }
+
+export interface ITrackFilter {
+  PageIndex?: number;
+  PageSize?: number;
+  SearchTerm?: string;
+  GenreId?: number;
+  ArtistId?: number;
+  AlbumId?: number;
+}
+
+export interface ITracksResponse {
+  data: ITrack[];
+  itemsAvailable: number;
+  pagesAvailable: number;
+}

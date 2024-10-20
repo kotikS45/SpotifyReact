@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { ITrack, ITrackCreate, ITrackUpdate } from "interfaces/track";
+import { ITrack, ITrackCreate, ITrackUpdate, ITrackFilter, ITracksResponse } from "interfaces/track"; // Додайте TrackFilterVm
 import { createBaseQuery } from "utils/baseQuery.ts";
 
 export const trackApi = createApi({
@@ -8,8 +8,11 @@ export const trackApi = createApi({
   tagTypes: ["Tracks"],
 
   endpoints: (builder) => ({
-    getTracks: builder.query<ITrack[], void>({
-      query: () => "GetAll",
+    getTracks: builder.query<ITracksResponse, ITrackFilter>({
+      query: (filter) => ({
+        url: "GetPage",
+        params: filter,
+      }),
       providesTags: ["Tracks"],
     }),
 
@@ -22,12 +25,12 @@ export const trackApi = createApi({
       query: (track) => {
         const formData = new FormData();
         formData.append("Name", track.name);
-        formData.append("Image", track.image); // додаємо зображення як файл
-    
+        formData.append("Image", track.image);
+
         return {
           url: "create",
           method: "POST",
-          body: formData,  // відправляємо як FormData
+          body: formData,
         };
       },
       invalidatesTags: ["Tracks"],
