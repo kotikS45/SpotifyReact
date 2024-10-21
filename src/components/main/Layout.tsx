@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar.tsx";
-import Header from "./Header.tsx";
+import Header from "./header/Header.tsx";
 import { Outlet } from "react-router-dom";
 import Player from "./player/index.tsx";
 
