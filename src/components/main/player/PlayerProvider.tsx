@@ -3,15 +3,18 @@ import { ITrack } from 'interfaces/track';
 import { API_URL } from 'utils/envData';
 
 interface IPlayerContext {
-  track: ITrack | null;
+  activeTrack: ITrack | null;
+  currentTrackIndex: number;
   isPlaying: boolean;
   progress: number;
+  volume: number,
   audioRef: React.RefObject<HTMLAudioElement>;
-  playTrack: (newTrack: ITrack) => void;
+  playTracks: (newTrack: ITrack[]) => void;
   playPause: () => void;
   playPrev: () => void;
   playNext: () => void;
   handleTimeUpdate: () => void;
+  updateVolume: (newVolume: number) => void;
 }
 
 export const PlayerContext = createContext<IPlayerContext | null>(null);
@@ -21,18 +24,36 @@ interface PlayerProviderProps {
 }
 
 export const PlayerProvider: React.FC<PlayerProviderProps> = ({ children }) => {
-  const [track, setTrack] = useState<ITrack | null>(null);
+  const [activeTrack, setActiveTrack] = useState<ITrack | null>(null);
+  const [tracks, setTracks] = useState<ITrack[] | null>(null);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
   const audioRef = useRef<HTMLAudioElement>(new Audio());
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
+  const [volume, setVolume] = useState<number>(0.5);
   
   const audioUrl = API_URL + "/Audio/";
 
-  const playTrack = (newTrack: ITrack) => {
-    setTrack(newTrack);
-    audioRef.current.src = audioUrl.concat(newTrack.path);
-    audioRef.current.play();
-    setIsPlaying(true);
+  const playTracks = (newTracks: ITrack[]) => {
+    setTracks(newTracks);
+    setCurrentTrackIndex(0);
+  };
+
+  useEffect(() => {
+    if (tracks) {
+      playTrackByIndex();
+    }
+  }, [tracks, currentTrackIndex]);
+
+  const playTrackByIndex = () => {
+    console.log(tracks);
+    if (tracks && tracks[currentTrackIndex]) {
+      setActiveTrack(tracks[currentTrackIndex]);
+      audioRef.current.src = audioUrl.concat(tracks[currentTrackIndex].path);
+      audioRef.current.volume = volume;
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
   };
 
   const playPause = () => {
@@ -44,6 +65,11 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({ children }) => {
     setIsPlaying(!isPlaying);
   };
 
+  const updateVolume = (newVolume: number) => {
+    audioRef.current.volume = newVolume;
+    setVolume(newVolume);
+  };
+
   const handleTimeUpdate = () => {
     const currentTime = audioRef.current.currentTime;
     const duration = audioRef.current.duration;
@@ -51,11 +77,19 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({ children }) => {
   };
 
   const playPrev = () => {
-
+    if (audioRef.current.currentTime > 3) {
+      audioRef.current.currentTime = 0;
+      setProgress(0);
+    }
+    else if (currentTrackIndex > 0) {
+      setCurrentTrackIndex(currentTrackIndex - 1);
+    }
   }
 
   const playNext = () => {
-    
+    if (tracks && currentTrackIndex < tracks.length - 1) {
+      setCurrentTrackIndex(currentTrackIndex + 1);
+    }
   }
 
   useEffect(() => {
@@ -75,15 +109,18 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({ children }) => {
   return (
     <PlayerContext.Provider
       value={{
-        track,
+        activeTrack,
+        currentTrackIndex,
         isPlaying,
         progress,
+        volume,
         audioRef,
-        playTrack,
+        playTracks,
         playPause,
         playPrev,
         playNext,
         handleTimeUpdate,
+        updateVolume,
       }}
     >
       {children}

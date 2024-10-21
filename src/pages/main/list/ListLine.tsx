@@ -13,7 +13,7 @@ interface IListLineProps {
 }
 
 const ListLine: React.FC<IListLineProps> = ({track}) => {
-  const { playTrack } = useContext(PlayerContext)!;
+  const { playTracks } = useContext(PlayerContext)!;
   const imageSrc = API_URL + "/Images/200_";
 
   return (
@@ -23,7 +23,7 @@ const ListLine: React.FC<IListLineProps> = ({track}) => {
         <div className="w-[10%] min-w-[300px] flex items-center">
           <div className="w-[50px] h-[50px] m-[12px] relative flex items-center justify-center group">
             <img src={imageSrc.concat(track.image)} alt={track.name} className="w-[50px] h-[50px] object-cover rounded-[14px]"/>
-            <Button className="absolute invisible group-hover:visible" onClick={() => playTrack(track)}>
+            <Button className="absolute invisible group-hover:visible" onClick={() => playTracks([track])}>
               <PlayerPlay className=" w-[34px] h-[34px]"/>
             </Button>
           </div>
