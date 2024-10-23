@@ -86,6 +86,7 @@ const LoginPage: React.FC = () => {
                             id={"email"}
                             type="email"
                             placeholder="Email"
+                            required
                         />
                     </div>
                     <div className="mt-4">
@@ -97,15 +98,16 @@ const LoginPage: React.FC = () => {
                             minLength={8}
                             id="password"
                             placeholder="Password"
+                            required
                         />
                     </div>
-                    <a className="text-loginTextColor2 text-[16px] pt-2" href="">Forgot your password?</a>
+                    <a className="text-loginTextColor2 text-[16px] pt-2" href="/forgotPassword">Forgot your password?</a>
                     <div className="flex justify-center">
                         <Button
                             disabled={isLoadingGoogleLogin || isLoadingEmailLogin}
                             type="submit"
                             variant="primary"
-                            className="bg-loginTextColor2 w-60 h-14 rounded-full mt-6 text-[24px] font-roboto text-2xl font-normal"
+                            className="bg-loginTextColor2 w-60 h-14 rounded-full mt-6 text-[24px] font-roboto text-2xl font-normal hover:bg-transparent"
                         >
                             Sign In
                         </Button>

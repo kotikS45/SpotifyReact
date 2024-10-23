@@ -15,6 +15,8 @@ import PlaylistsPage from "components/pages/main/PlaylistsPage";
 import FavoritePage from "components/pages/main/FavoritePage";
 import { PlayerProvider } from "components/main/player/PlayerProvider";
 import PrivateRoute from "components/pages/auth/PrivateRoute";
+import ResetPasswordPage from "components/pages/auth/ResetPasswordPage";
+import ForgotPasswordPage from "components/pages/auth/ForgotPasswordPage";
 
 const App = () => {
   return (
@@ -51,6 +53,8 @@ const App = () => {
         <Route element={<AccountLayout />}>
           <Route path="register" element={<RegisterPage/>}/>
           <Route path="login" element={<LoginPage />} />
+          <Route path="resetPassword" element={<ResetPasswordPage />} />
+          <Route path="forgotPassword" element={<ForgotPasswordPage/>} />
         </Route>
     
       </Routes>

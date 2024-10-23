@@ -72,6 +72,7 @@ const RegisterPage: React.FC = () => {
                         <Input
                             className="bg-loginEditTextBg text-white focus:border-none rounded-lg focus:ring-0 border-none"
                             value={name}
+                            required
                             onChange={(e) => setName(e.target.value)}
                             id="name"
                             type="text"
@@ -82,6 +83,7 @@ const RegisterPage: React.FC = () => {
                         <Input
                             className="bg-loginEditTextBg text-white focus:border-none rounded-lg focus:ring-0 border-none"
                             value={username}
+                            required
                             onChange={(e) => setUsername(e.target.value)}
                             id="username"
                             type="text"
@@ -91,6 +93,7 @@ const RegisterPage: React.FC = () => {
                     <div className="flex">
                         <div className="mt-4 w-full">
                             <DatePicker
+                                required
                                 selected={birthDate}
                                 onChange={(date: Date | null) => { date ? setBirthDate(date) : null }}
                                 dateFormat="dd/MM/yyyy"
@@ -122,6 +125,7 @@ const RegisterPage: React.FC = () => {
                             id="email"
                             type="email"
                             placeholder="Email"
+                            required
                         />
                     </div>
                     <div className="mt-4">
@@ -132,6 +136,7 @@ const RegisterPage: React.FC = () => {
                             id="password"
                             type="password"
                             placeholder="Password"
+                            required
                         />
                     </div>
                     <div className="flex justify-center">
@@ -140,7 +145,7 @@ const RegisterPage: React.FC = () => {
                           type="button"
                           onClick={handleRegister}
                           variant="primary"
-                          className="bg-loginTextColor2 w-60 h-14 rounded-full mt-6 text-[24px] font-roboto text-2xl font-normal"
+                          className="bg-loginTextColor2 w-60 h-14 rounded-full mt-6 text-[24px] font-roboto text-2xl font-normal hover:bg-transparent"
                       >
                           Sign Up
                       </Button>
