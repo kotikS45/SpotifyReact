@@ -1,20 +1,20 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import AdminLayout from "components/admin/AdminLayout.tsx";
-import ArtistPage from "pages/admin/artist/ArtistPage.tsx"; 
-import ArtistCreatePage from 'pages/admin/artist/ArtistCreatePage.tsx';
-import AccountLayout from "pages/auth/AccountLayout.tsx";
-import LoginPage from "pages/auth/LoginPage.tsx";
-import RegisterPage from "pages/auth/RegisterPage.tsx";
+import ArtistPage from "components/pages/admin/artist/ArtistPage.tsx"; 
+import ArtistCreatePage from 'components/pages/admin/artist/ArtistCreatePage.tsx';
+import AccountLayout from "components/pages/auth/AccountLayout.tsx";
+import LoginPage from "components/pages/auth/LoginPage.tsx";
+import RegisterPage from "components/pages/auth/RegisterPage.tsx";
 import Layout from "components/main/Layout.tsx";
 import BackgroundSetter from "components/BackgroundSetter";
-import SubscriptionsPage from "pages/main/SubscriptionsPage";
-import PaymentPage from "pages/main/PaymentPage";
-import GenresPage from "pages/main/GenresPage";
-import PlaylistsPage from "pages/main/PlaylistsPage";
-import FavoritePage from "pages/main/FavoritePage";
+import SubscriptionsPage from "components/pages/main/SubscriptionsPage";
+import PaymentPage from "components/pages/main/PaymentPage";
+import GenresPage from "components/pages/main/GenresPage";
+import PlaylistsPage from "components/pages/main/PlaylistsPage";
+import FavoritePage from "components/pages/main/FavoritePage";
 import { PlayerProvider } from "components/main/player/PlayerProvider";
-import PrivateRoute from "pages/auth/PrivateRoute";
+import PrivateRoute from "components/pages/auth/PrivateRoute";
 
 const App = () => {
   return (
