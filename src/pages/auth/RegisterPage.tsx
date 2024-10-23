@@ -158,7 +158,7 @@ const RegisterPage: React.FC = () => {
                 <div className="flex justify-center pt-9 pb-9">
                     <span className="text-white text-[18px]">Already have an account?</span>
                     &nbsp; { }
-                    <a className="text-loginTextColor2 text-[18px] m1-2" href="/auth/login">Sign in</a>
+                    <a className="text-loginTextColor2 text-[18px] m1-2" href="/login">Sign in</a>
                 </div>
             </div>
         </div>

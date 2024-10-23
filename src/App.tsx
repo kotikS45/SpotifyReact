@@ -14,6 +14,7 @@ import GenresPage from "pages/main/GenresPage";
 import PlaylistsPage from "pages/main/PlaylistsPage";
 import FavoritePage from "pages/main/FavoritePage";
 import { PlayerProvider } from "components/main/player/PlayerProvider";
+import PrivateRoute from "pages/auth/PrivateRoute";
 
 const App = () => {
   return (
@@ -21,33 +22,33 @@ const App = () => {
       <BackgroundSetter/>
       <Routes>
       
+        <Route element={<PrivateRoute/>}>
+          <Route path="/" element={<Layout/>}>
+            <Route path="library" element={<></>}/>
+            <Route path="favorite" element={<FavoritePage/>}/>
 
-        <Route path="/" element={<Layout/>}>
-          <Route path="library" element={<></>}/>
-          <Route path="favorite" element={<FavoritePage/>}/>
-
-          <Route path="albums" element={<></>}/>
-          <Route path="playlists" element={<PlaylistsPage/>}/>
-          <Route path="forartist" element={<></>}/>
-          <Route path="account" element={<></>}/>
+            <Route path="albums" element={<></>}/>
+            <Route path="playlists" element={<PlaylistsPage/>}/>
+            <Route path="forartist" element={<></>}/>
+            <Route path="account" element={<></>}/>
         
-          <Route path="friends" element={<></>}/>
-          <Route path="genres" element={<GenresPage/>}/>
-          <Route path="notification" element={<></>}/>
+            <Route path="friends" element={<></>}/>
+            <Route path="genres" element={<GenresPage/>}/>
+            <Route path="notification" element={<></>}/>
         
-          <Route path="premium" element={<SubscriptionsPage/>}/>
-          <Route path="payment" element={<PaymentPage/>}/>
-          <Route path="profile" element={<></>}/>
-        </Route>
+            <Route path="premium" element={<SubscriptionsPage/>}/>
+            <Route path="payment" element={<PaymentPage/>}/>
+          </Route>
 
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="artists">
-            <Route path="list" element={<ArtistPage />} />
-            <Route path="create" element={<ArtistCreatePage />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="artists">
+              <Route path="list" element={<ArtistPage />} />
+              <Route path="create" element={<ArtistCreatePage />} />
+            </Route>
           </Route>
         </Route>
 
-        <Route path="/auth/" element={<AccountLayout />}>
+        <Route element={<AccountLayout />}>
           <Route path="register" element={<RegisterPage/>}/>
           <Route path="login" element={<LoginPage />} />
         </Route>
