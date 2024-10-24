@@ -48,7 +48,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
   }, [sidebarOpen, setSidebarOpen]);
 
   return(
-    <div id="sidebar" ref={sidebar} className="opacity-85">
+    <div id="sidebar" ref={sidebar} className="opacity-85 h-screen sticky top-0 left-0">
       {sidebarOpen ? (
         <div
           id="sidebar"

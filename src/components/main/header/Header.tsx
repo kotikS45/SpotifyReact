@@ -36,7 +36,7 @@ const Header = () => {
   const imageSrc = API_URL + "/Images/200_";
 
   return (
-    <header className="sticky z-30 top-0 flex items-center justify-end ml-[10px] px-[10px] w-[100%] h-[78px] bg-black rounded-b-[14px] opacity-85">
+    <header className="sticky z-40 top-0 right-0 flex items-center justify-end px-[10px] w-full h-[78px] bg-black rounded-b-[14px] opacity-85">
       <div className="flex ml-auto mr-auto py-[20px]">
         <HeaderLink icon={<Friends className="w-[18px] h-[18px]"/>} to="/friends"/>
         <div className="flex items-center transition duration-150 mx-[7px] h-[37px] bg-[#3b3b3b] rounded-full">

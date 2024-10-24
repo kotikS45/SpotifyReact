@@ -6,6 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari та інші браузери на основі Webkit */
+}
+
 body {
   background-size: cover;
   background-position: top;

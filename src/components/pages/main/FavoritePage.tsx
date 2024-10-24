@@ -4,26 +4,51 @@ import PlayerPlay from "components/main/icon/PlayerPlay"
 import PlayerMore from "components/main/icon/PlayerMore"
 import PlayerSearch from "components/main/icon/PlayerSearch"
 import List from "./list/List"
-import { useGetTracksQuery } from "services/track"
+import { useGetLikesQuery } from "services/like"
 import { ITrackFilter } from "interfaces/track"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { PlayerContext } from "components/main/player/PlayerProvider"
 
-
 const FavoritePage = () => {
-
-  const filter: ITrackFilter = {
+  const [filter, setFilter] = useState<ITrackFilter>({
     PageIndex: 0,
-    PageSize: 15,
-  }
+    PageSize: 10,
+  });
 
+  const [allTracks, setAllTracks] = useState<any[]>([]);
+  const [hasMore, setHasMore] = useState(true); // Прапорець для перевірки наявності треків
   const { playTracks } = useContext(PlayerContext)!;
-  const { data } = useGetTracksQuery(filter);
+  const { data, isFetching } = useGetLikesQuery(filter);
 
+  useEffect(() => {
+    if (data) {
+      console.log("load");
 
-  
+      if (data.data.length < filter.PageSize) {
+        // Якщо кількість отриманих треків менша за PageSize, значить більше немає даних
+        setHasMore(false);
+      }
+
+      setAllTracks(prevTracks => [...prevTracks, ...data.data]);
+    }
+  }, [data]);
+
+  const handleScroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 && !isFetching && hasMore) {
+      // Збільшуйте PageIndex тільки якщо ще є треки для завантаження
+      setFilter(prev => ({ ...prev, PageIndex: prev.PageIndex + 1 }));
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isFetching, hasMore]);
+
   return (
-    <div>
+    <div className="">
       <div className="w-full relative">
         <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-l-[14px]" />
         <div className="w-full relative z-10 flex flex-row">
@@ -39,7 +64,7 @@ const FavoritePage = () => {
         <div className="w-full relative z-10">
           <div className="flex flex-row pl-[54px] py-[20px] text-white items-center">
             
-            <button onClick={data ? () => playTracks(data?.data) : () => {}}>
+            <button onClick={allTracks.length ? () => playTracks(allTracks) : () => {}}>
               <PlayerPlay className="mr-[20px]"/>
             </button>
             <PlayerMix className="mr-[20px]"/>
@@ -53,9 +78,9 @@ const FavoritePage = () => {
       <div className="w-full relative mt-[10px]">
         <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-l-[14px]" />
         <div className="w-full relative z-10">
-          <div className="flex flex-col px-[54px] pt-[16px]">
+          <div className="flex flex-col px-[54px] py-[16px]">
             
-            {data ? <List tracks={data?.data}/> : null}
+            {allTracks.length ? <List tracks={allTracks}/> : null}
 
           </div>
         </div>
@@ -64,4 +89,4 @@ const FavoritePage = () => {
   )
 }
 
-export default FavoritePage
+export default FavoritePage;
