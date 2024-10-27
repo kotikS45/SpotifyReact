@@ -48,7 +48,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
   }, [sidebarOpen, setSidebarOpen]);
 
   return(
-    <div id="sidebar" ref={sidebar} className="opacity-85">
+    <div id="sidebar" ref={sidebar} className="opacity-85 h-screen sticky top-0 left-0">
       {sidebarOpen ? (
         <div
           id="sidebar"
@@ -105,9 +105,9 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
               activeCondition={(pathname) => pathname === "/playlists"}
             />
             <SidebarLink
-              to="/forartist"
-              icon={pathname === "/forartist" ? <MicrophoneF/> : <Microphone/>}
-              label="For Artist"
+              to="/artists"
+              icon={pathname === "/artist" ? <MicrophoneF/> : <Microphone/>}
+              label="Artists"
               activeCondition={(pathname) => pathname === "/forartist"}
             />
             <div className="mt-[40px]">

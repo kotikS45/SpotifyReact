@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { IArtist, IArtistCreate, IArtistUpdate } from "interfaces/artist";
+import { IArtist, IArtistCreate, IArtistFilter, IArtistsResponse, IArtistUpdate } from "interfaces/artist";
 import { createBaseQuery } from "utils/baseQuery.ts";
 
 export const artistApi = createApi({
@@ -8,8 +8,11 @@ export const artistApi = createApi({
   tagTypes: ["Artists"],
 
   endpoints: (builder) => ({
-    getArtists: builder.query<IArtist[], void>({
-      query: () => "GetAll",
+    getArtists: builder.query<IArtistsResponse, IArtistFilter>({
+      query: (filter) => ({
+        url: "GetPage",
+        params: filter
+      }),
       providesTags: ["Artists"],
     }),
 

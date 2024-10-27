@@ -53,7 +53,23 @@ export const userApi = createApi({
                 };
             },
         }),
+
+        forgotPassword: builder.mutation<void, { email: string }>({
+            query: (data) => ({
+                url: "ForgotPassword",
+                method: "POST",
+                body: data,
+            }),
+        }),
+
+        resetPassword: builder.mutation<void, { email: string; token: string; password: string }>({
+            query: (data) => ({
+                url: "ResetPassword",
+                method: "POST",
+                body: data,
+            }),
+        }),
     }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useGoogleLoginMutation } = userApi;
+export const { useLoginMutation, useRegisterMutation, useGoogleLoginMutation, useForgotPasswordMutation, useResetPasswordMutation } = userApi;

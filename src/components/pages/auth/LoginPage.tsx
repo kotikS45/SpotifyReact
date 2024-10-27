@@ -7,7 +7,6 @@ import { useGoogleLoginMutation, useLoginMutation } from "services/user.ts";
 import { useAppDispatch } from "store/index.ts";
 import { setCredentials } from "store/slice/userSlice.ts";
 import { jwtParser } from "utils/jwtParser.ts";
-import showToast from "utils/toastShow.ts";
 
 import React from "react";
 
@@ -30,9 +29,9 @@ const LoginPage: React.FC = () => {
         if (res && "data" in res && res.data) {
             console.log(res.data.token);
             setUser(res.data.token);
-            showToast(`Авторизація успішна!`, "success");
+            
         } else {
-            showToast(`Помилка авторизаціі. Перевірте ваші дані!`, "error");
+            
         }
     };
 
@@ -44,9 +43,8 @@ const LoginPage: React.FC = () => {
 
         if (res && "data" in res && res.data) {
             setUser(res.data.token);
-            showToast(`Авторизація успішна!`, "success");
         } else {
-            showToast(`Помилка авторизаціі. Перевірте ваші дані!`, "error");
+            
         }
     };
 
@@ -88,6 +86,7 @@ const LoginPage: React.FC = () => {
                             id={"email"}
                             type="email"
                             placeholder="Email"
+                            required
                         />
                     </div>
                     <div className="mt-4">
@@ -99,15 +98,16 @@ const LoginPage: React.FC = () => {
                             minLength={8}
                             id="password"
                             placeholder="Password"
+                            required
                         />
                     </div>
-                    <a className="text-loginTextColor2 text-[16px] pt-2" href="">Forgot your password?</a>
+                    <a className="text-loginTextColor2 text-[16px] pt-2" href="/forgotPassword">Forgot your password?</a>
                     <div className="flex justify-center">
                         <Button
                             disabled={isLoadingGoogleLogin || isLoadingEmailLogin}
                             type="submit"
                             variant="primary"
-                            className="bg-loginTextColor2 w-60 h-14 rounded-full mt-6 text-[24px] font-roboto text-2xl font-normal"
+                            className="bg-loginTextColor2 w-60 h-14 rounded-full mt-6 text-[24px] font-roboto text-2xl font-normal hover:bg-transparent"
                         >
                             Sign In
                         </Button>
@@ -134,7 +134,7 @@ const LoginPage: React.FC = () => {
                 <div className="flex justify-center pt-9 pb-9">
                     <span className="text-white text-[18px]">Need an account?</span>
                     &nbsp; { }
-                    <a className="text-loginTextColor2 text-[18px] m1-2" href="/auth/register">Sign up</a>
+                    <a className="text-loginTextColor2 text-[18px] m1-2" href="/register">Sign up</a>
                 </div>
             </div>
         </div>
