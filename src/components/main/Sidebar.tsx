@@ -105,9 +105,9 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
               activeCondition={(pathname) => pathname === "/playlists"}
             />
             <SidebarLink
-              to="/forartist"
-              icon={pathname === "/forartist" ? <MicrophoneF/> : <Microphone/>}
-              label="For Artist"
+              to="/artists"
+              icon={pathname === "/artist" ? <MicrophoneF/> : <Microphone/>}
+              label="Artists"
               activeCondition={(pathname) => pathname === "/forartist"}
             />
             <div className="mt-[40px]">

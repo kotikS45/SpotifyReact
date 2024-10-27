@@ -1,7 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import AdminLayout from "components/admin/AdminLayout.tsx";
-import ArtistPage from "components/pages/admin/artist/ArtistPage.tsx"; 
 import ArtistCreatePage from 'components/pages/admin/artist/ArtistCreatePage.tsx';
 import AccountLayout from "components/pages/auth/AccountLayout.tsx";
 import LoginPage from "components/pages/auth/LoginPage.tsx";
@@ -17,6 +16,8 @@ import { PlayerProvider } from "components/main/player/PlayerProvider";
 import PrivateRoute from "components/pages/auth/PrivateRoute";
 import ResetPasswordPage from "components/pages/auth/ResetPasswordPage";
 import ForgotPasswordPage from "components/pages/auth/ForgotPasswordPage";
+import ArtistsPage from "components/pages/main/ArtistsPage.tsx";
+import ArtistPage from "components/pages/admin/artist/ArtistPage";
 
 const App = () => {
   return (
@@ -31,7 +32,7 @@ const App = () => {
 
             <Route path="albums" element={<></>}/>
             <Route path="playlists" element={<PlaylistsPage/>}/>
-            <Route path="forartist" element={<></>}/>
+            <Route path="artists" element={<ArtistsPage/>}/>
             <Route path="account" element={<></>}/>
         
             <Route path="friends" element={<></>}/>

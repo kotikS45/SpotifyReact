@@ -16,16 +16,13 @@ const FavoritePage = () => {
   });
 
   const [allTracks, setAllTracks] = useState<any[]>([]);
-  const [hasMore, setHasMore] = useState(true); // Прапорець для перевірки наявності треків
+  const [hasMore, setHasMore] = useState(true);
   const { playTracks } = useContext(PlayerContext)!;
   const { data, isFetching } = useGetLikesQuery(filter);
 
   useEffect(() => {
     if (data) {
-      console.log("load");
-
       if (data.data.length < filter.PageSize) {
-        // Якщо кількість отриманих треків менша за PageSize, значить більше немає даних
         setHasMore(false);
       }
 
@@ -35,7 +32,6 @@ const FavoritePage = () => {
 
   const handleScroll = () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 && !isFetching && hasMore) {
-      // Збільшуйте PageIndex тільки якщо ще є треки для завантаження
       setFilter(prev => ({ ...prev, PageIndex: prev.PageIndex + 1 }));
     }
   };
