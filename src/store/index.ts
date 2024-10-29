@@ -8,6 +8,7 @@ import { playlistApi } from "services/playlist";
 import userReducer from "store/slice/userSlice.ts";
 import { trackApi } from "services/track";
 import { likeApi } from "services/like";
+import { playlistTracksApi } from "services/playlistTrack";
 
 export const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
         [playlistApi.reducerPath]: playlistApi.reducer,
         [trackApi.reducerPath]: trackApi.reducer,
         [likeApi.reducerPath]: likeApi.reducer,
+        [playlistTracksApi.reducerPath]: playlistTracksApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
@@ -27,6 +29,7 @@ export const store = configureStore({
           playlistApi.middleware,
           trackApi.middleware,
           likeApi.middleware,
+          playlistTracksApi.middleware,
         ),
 });
 

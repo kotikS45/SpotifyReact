@@ -1,11 +1,9 @@
 import { useGetPlaylistsQuery } from "services/playlist"
-import { API_URL } from "utils/envData";
-import PlaylistTile from "./PlaylistTile";
+import PlaylistTile from "./PlaylistTile"
 
 
 const PlaylistsPage = () => {
   const { data: playlists } = useGetPlaylistsQuery();
-  const imageSrc = API_URL + "/Images/400_";
 
   return (
     <div>
@@ -27,7 +25,7 @@ const PlaylistsPage = () => {
             <div className="mt-[22px] w-full flex flex-row flex-wrap justify-start items-start">
               {playlists ? playlists.map((item) => (
                 <div key={item.id} className="mr-[30px] my-[15px]">
-                  <PlaylistTile title={item.name} imageUrl={imageSrc.concat(item.image)}/>
+                  <PlaylistTile playlist={item}/>
                 </div>
                 )) : null
               }

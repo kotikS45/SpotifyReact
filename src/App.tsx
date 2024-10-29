@@ -18,6 +18,7 @@ import ResetPasswordPage from "components/pages/auth/ResetPasswordPage";
 import ForgotPasswordPage from "components/pages/auth/ForgotPasswordPage";
 import ArtistsPage from "components/pages/main/ArtistsPage.tsx";
 import ArtistPage from "components/pages/admin/artist/ArtistPage";
+import PlaylistPage from "components/pages/main/PlaylistPage";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
 
             <Route path="albums" element={<></>}/>
             <Route path="playlists" element={<PlaylistsPage/>}/>
+            <Route path="playlist" element={<PlaylistPage />} />
             <Route path="artists" element={<ArtistsPage/>}/>
             <Route path="account" element={<></>}/>
         
