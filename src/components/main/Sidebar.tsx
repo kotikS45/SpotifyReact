@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import SidebarLink from "./link/SidebarLink.tsx";
 
 import Home from "./icon/Home.tsx";
@@ -16,6 +16,7 @@ import MicrophoneF from "./icon/MicrophoneF.tsx";
 import PlaylistF from "./icon/PlaylistF.tsx";
 import AlbumF from "./icon/AlbumF.tsx";
 import LikeF from "./icon/LikeF.tsx";
+import { PlayerContext } from "./player/PlayerProvider.tsx";
 
 
 interface ISidebarProps {
@@ -31,6 +32,8 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
 
   const trigger = useRef<HTMLButtonElement | null>(null);
   const sidebar = useRef<HTMLDivElement | null>(null);
+  
+  const { activeTrack } = useContext(PlayerContext);
   
   useEffect(() => {
     const clickHandler = (event: MouseEvent) => {
@@ -48,13 +51,13 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
   }, [sidebarOpen, setSidebarOpen]);
 
   return(
-    <div id="sidebar" ref={sidebar} className="opacity-85 h-screen sticky top-0 left-0">
+    <div id="sidebar" ref={sidebar} className={`opacity-85 sticky top-0 left-0 h-full`}>
       {sidebarOpen ? (
         <div
           id="sidebar"
           ref={sidebar}
           className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 
-          h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-[252px] lg:w-[252px] lg:sidebar-expanded:!w-[252px] 2xl:!w-[252px]
+          ${activeTrack ? 'h-[calc(100vh-118px)] rounded-br-[14px]' : 'h-screen'} overflow-y-scroll lg:overflow-y-auto no-scrollbar w-[252px] lg:w-[252px] lg:sidebar-expanded:!w-[252px] 2xl:!w-[252px]
           shrink-0 bg-black transition-all duration-200 ease-in-out`}
         >
           <div className="flex flex-col justify-between gap-2 pt-[11px] pl-[12px] pb-[15px]">
@@ -80,8 +83,8 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
               activeCondition={(pathname) => pathname === "/"}
             />
             <SidebarLink
-              to="/library"
-              icon={pathname === "/library" ? <LibraryF/> : <Library/>}
+              to="/favorite"
+              icon={["/favorite", "/playlists", "/albums", "/artists"].includes(pathname) ? <LibraryF/> : <Library/>}
               label="Library"
               activeCondition={(pathname) => pathname === "/library"}
             />
@@ -126,7 +129,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
           ref={sidebar}
           className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 
           h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-[102px] lg:w-[102px] lg:sidebar-expanded:!w-[102px] 2xl:!w-[102px]
-          shrink-0 bg-black transition-all duration-200 ease-in-out`}
+          shrink-0 bg-black transition-all duration-200 ease-in-out ${activeTrack ? 'h-[calc(100vh-118px)] rounded-br-[14px]' : 'h-screen'}`}
         >
           <div className="flex flex-col justify-between gap-2 pt-[11px] pl-[12px] pb-[15px]">
             <button
@@ -148,8 +151,8 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
               activeCondition={(pathname) => pathname === "/"}
             />
             <SidebarLink
-              to="/library"
-              icon={pathname === "/library" ? <LibraryF/> : <Library/>}
+              to="/favorite"
+              icon={["/favorite", "/playlists", "/albums", "/artists"].includes(pathname) ? <LibraryF/> : <Library/>}
               label=""
               activeCondition={(pathname) => pathname === "/library"}
             />

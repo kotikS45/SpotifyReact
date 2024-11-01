@@ -14,3 +14,16 @@ export interface IPlaylistUpdate {
   name: string,
   image: File
 }
+
+export interface IPlaylistFilter {
+  PageIndex?: number;
+  PageSize?: number;
+  SearchTerm?: string;
+  IsRandom?: boolean;
+}
+
+export interface IPlaylistResponce {
+  data: IPlaylist[],
+  itemsAvailable: number;
+  pagesAvailable: number;
+}

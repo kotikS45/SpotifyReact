@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Sidebar from "./Sidebar.tsx";
 import Header from "./header/Header.tsx";
 import { Outlet } from "react-router-dom";
 import Player from "./player/index.tsx";
+import { PlayerContext } from "./player/PlayerProvider.tsx";
 
 const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const { activeTrack } = useContext(PlayerContext);
 
   return (
     <div className="flex">
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <div className="flex flex-col flex-1 ml-[10px]">
+        <div className={`flex flex-col ${sidebarOpen ? 'w-[calc(100vw-252px)]' : 'w-[calc(100vw-102px)]'} ml-[10px]`}>
           <Header/>
-          <main className="w-full mt-[10px] overflow-hidden">
-            <Outlet />
+          <main className={`w-full mt-[10px] overflow-hidden ${activeTrack ? 'mb-[118px]' : 'mb-[10px]'}`}>
+          <Outlet />
           </main>
         </div>
         <Player/>

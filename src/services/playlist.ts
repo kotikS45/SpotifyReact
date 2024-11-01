@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { IPlaylist, IPlaylistCreate, IPlaylistUpdate } from "interfaces/playlist";
+import { IPlaylist, IPlaylistCreate, IPlaylistFilter, IPlaylistResponce, IPlaylistUpdate } from "interfaces/playlist";
 import { createBaseQuery } from "utils/baseQuery.ts";
 
 export const playlistApi = createApi({
@@ -8,8 +8,11 @@ export const playlistApi = createApi({
   tagTypes: ["Playlists"],
 
   endpoints: (builder) => ({
-    getPlaylists: builder.query<IPlaylist[], void>({
-      query: () => "GetAll",
+    getPlaylists: builder.query<IPlaylistResponce, IPlaylistFilter>({
+      query: (filter) => ({
+        url: "GetPage",
+        params: filter,
+      }),
       providesTags: ["Playlists"],
     }),
 

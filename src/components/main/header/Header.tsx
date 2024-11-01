@@ -51,7 +51,7 @@ const Header = () => {
           to="/premium">
           Premium
         </NavLink>
-        <NavLink to="" className="text-white mr-[24px] font-roboto text-[16px]">
+        <NavLink to="" className="text-white mr-[24px] font-roboto text-[16px] hidden">
           ENG | UA
         </NavLink>
         {user ? (
