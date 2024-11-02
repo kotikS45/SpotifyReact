@@ -17,7 +17,6 @@ const ArtistsPage = () => {
   const {data, isFetching } = useGetArtistsQuery(filter);
 
   useEffect(() => {
-    console.log(data);
     if (data) {
       if (data.data.length < filter.PageSize) {
         setHasMore(false);

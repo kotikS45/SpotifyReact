@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { LoginResponse, RegisterUser } from "interfaces/user";
+import { LoginResponse, RegisterUser, UpdateUser, UserInfo } from "interfaces/user";
 import { createBaseQuery } from "utils/baseQuery";
 
 export const userApi = createApi({
@@ -8,6 +8,29 @@ export const userApi = createApi({
     tagTypes: ["User"],
 
     endpoints: (builder) => ({
+        getInfo: builder.query<UserInfo, void>({
+            query: () => ({
+                url: "GetInfo",
+                method: "GET",
+            }),
+            providesTags: ["User"],
+        }),
+
+        updateUser: builder.mutation<void, UpdateUser>({
+            query: (data) => {
+              const formData = new FormData();
+              if (data.username) formData.append("username", data.username);
+              if (data.image) formData.append("image", data.image);
+          
+              return {
+                url: "update",
+                method: "PUT",
+                body: formData,
+              };
+            },
+            invalidatesTags: ["User"],
+          }),
+
         login: builder.mutation<LoginResponse, { email: string; password: string }>({
             query: (data) => {
                 const formData = new FormData();
@@ -72,4 +95,4 @@ export const userApi = createApi({
     }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useGoogleLoginMutation, useForgotPasswordMutation, useResetPasswordMutation } = userApi;
+export const { useGetInfoQuery, useUpdateUserMutation, useLoginMutation, useRegisterMutation, useGoogleLoginMutation, useForgotPasswordMutation, useResetPasswordMutation } = userApi;

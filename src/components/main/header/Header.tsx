@@ -5,12 +5,12 @@ import Notifications from "../icon/Notifications";
 import HeaderLink from "../link/HeaderLink";
 import SearchBar from "./SearchBar";
 import HeaderSearch from "../icon/HeaderSearch";
-import { getUser, logOut } from "store/slice/userSlice";
-import { useAppSelector } from "store";
+import { logOut } from "store/slice/userSlice";
 import { API_URL } from "utils/envData";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "store";
+import { userApi } from "services/user";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -32,7 +32,7 @@ const Header = () => {
     navigate("/login");
   };
 
-  const user = useAppSelector(getUser);
+  const user = userApi.useGetInfoQuery().data;
   const imageSrc = API_URL + "/Images/200_";
 
   return (
@@ -56,7 +56,7 @@ const Header = () => {
         </NavLink>
         {user ? (
           <div>
-            <img src={imageSrc.concat(user.image)} alt={user.username} className="w-[50px] h-[50px] object-cover mr-[20px] cursor-pointer" onClick={handleContextMenu}/>
+            <img src={imageSrc.concat(user?.photo)} alt={user?.userName} className="w-[50px] h-[50px] rounded-full object-cover mr-[20px] cursor-pointer" onClick={handleContextMenu}/>
             {showMenu && (
               <div
                 className="absolute top-[78px] right-[20px] bg-black rounded-[5px] z-40 w-[120px] py-[2px]"
