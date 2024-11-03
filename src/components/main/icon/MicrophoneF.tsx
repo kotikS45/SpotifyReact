@@ -14,16 +14,9 @@ const MicrophoneF: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
             fill="url(#paint0_linear_566_406)"
         />
         <defs>
-            <linearGradient
-                id="paint0_linear_566_406"
-                x1="0.0490625"
-                y1="13.74"
-                x2="26.4291"
-                y2="13.74"
-                gradientUnits="userSpaceOnUse"
-            >
-                <stop stopColor="#A30028" />
-                <stop offset="1" stopColor="#FB2645" />
+            <linearGradient id="paint0_linear_566_406" x1="0.0490625" y1="13.74" x2="26.4291" y2="13.74" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#A30028" />
+            <stop offset="1" stopColor="#FB2645" />
             </linearGradient>
         </defs>
     </svg>

@@ -21,6 +21,7 @@ export interface IArtistFilter {
   PageIndex?: number;
   PageSize?: number;
   SearchTerm?: string;
+  IsRandom?: boolean;
 }
 
 export interface IArtistsResponse {
