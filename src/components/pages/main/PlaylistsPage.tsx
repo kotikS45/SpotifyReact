@@ -1,11 +1,13 @@
 import { useGetPlaylistsQuery } from "services/playlist"
-import { API_URL } from "utils/envData";
-import PlaylistTile from "./PlaylistTile";
+import PlaylistTile from "./PlaylistTile"
 
 
 const PlaylistsPage = () => {
-  const { data: playlists } = useGetPlaylistsQuery();
-  const imageSrc = API_URL + "/Images/400_";
+  const { data: playlists } = useGetPlaylistsQuery({
+    PageSize: 30,
+    PageIndex: 0,
+    IsRandom: false
+  });
 
   return (
     <div>
@@ -25,9 +27,9 @@ const PlaylistsPage = () => {
           <div className="flex flex-col p-[54px]">
             <span className="font-montserrat font-semibold text-2xl text-loginTextColor2">Your playlists</span>
             <div className="mt-[22px] w-full flex flex-row flex-wrap justify-start items-start">
-              {playlists ? playlists.map((item) => (
+              {playlists?.data ? playlists.data.map((item) => (
                 <div key={item.id} className="mr-[30px] my-[15px]">
-                  <PlaylistTile title={item.name} imageUrl={imageSrc.concat(item.image)}/>
+                  <PlaylistTile playlist={item}/>
                 </div>
                 )) : null
               }
@@ -36,6 +38,7 @@ const PlaylistsPage = () => {
                 <span className="font-roboto font-medium text-white text-base pt-[16px] text-center">Add a playlist</span>
               </div>
             </div>
+            <div className="h-[200px]"></div>
           </div>
         </div>
       </div>

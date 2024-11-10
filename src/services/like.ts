@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { ITrack } from "interfaces/track";
+import { ITracksResponse, ITrackFilter } from "interfaces/track";
 import { createBaseQuery } from "utils/baseQuery.ts";
 
 export const likeApi = createApi({
@@ -8,8 +8,11 @@ export const likeApi = createApi({
   tagTypes: ["Likes"],
 
   endpoints: (builder) => ({
-    getLikes: builder.query<ITrack[], void>({
-      query: () => "GetAll",
+    getLikes: builder.query<ITracksResponse, ITrackFilter>({
+      query: (filter) => ({
+        url: "GetPage",
+        params: filter
+      }),
       providesTags: ["Likes"],
     }),
 

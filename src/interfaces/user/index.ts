@@ -24,3 +24,19 @@ export interface RegisterUser {
     password: string;
     birthDate: string;
 }
+
+export interface UserInfo {
+    name: string,
+    photo: string,
+    dateOfBirth: Date,
+    email: string,
+    normalizedEmail: string,
+    userName: string,
+    normalizedUserName: string,
+    emailConfirmed: boolean,
+}
+
+export interface UpdateUser {
+    username?: string;
+    image?: File;
+}

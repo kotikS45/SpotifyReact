@@ -14,9 +14,9 @@ const HeaderLink: React.FC<HeaderLinkProps> = ({ to, icon, activeCondition }) =>
     <NavLink
         end
         to={to}
-        className={`flex items-center justify-center transition duration-150 mx-[7px] w-[62px] h-[38px] bg-[#3b3b3b] rounded-full`}
+        className={`flex items-center justify-center transition duration-150 mx-[7px] w-[62px] h-[37px] bg-[#3b3b3b] rounded-full`}
     >
-      <div className="w-[18px] h-[18px]">{icon}</div>
+      <div className="">{icon}</div>
     </NavLink>
   );
 };

@@ -7,8 +7,6 @@ interface IGenreTileProps {
 }
 
 const GenreTile: React.FC<IGenreTileProps> = ({ title, imageUrl }) => {
-  
-console.log(title + " " + colorSelectorDark(title));
 
   return (
     <div className="w-[310px] h-[182px] rounded-[16px] flex">

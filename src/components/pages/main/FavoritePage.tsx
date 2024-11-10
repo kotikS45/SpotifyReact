@@ -1,22 +1,50 @@
 import PlayerDownload from "components/main/icon/PlayerDownload"
 import PlayerMix from "components/main/icon/PlayerMix"
-import PlayerMore from "components/main/icon/PlayerMore"
 import PlayerPlay from "components/main/icon/PlayerPlay"
+import PlayerMore from "components/main/icon/PlayerMore"
 import PlayerSearch from "components/main/icon/PlayerSearch"
-import { IPlaylist } from "interfaces/playlist"
 import List from "./list/List"
-import { useGetTracksQuery } from "services/track"
+import { useGetLikesQuery } from "services/like"
+import { ITrackFilter } from "interfaces/track"
+import { useContext, useEffect, useState } from "react"
+import { PlayerContext } from "components/main/player/PlayerProvider"
 
-interface IPlaylsitPageProps {
-  playlist: IPlaylist
-}
+const FavoritePage = () => {
+  const [filter, setFilter] = useState<ITrackFilter>({
+    PageIndex: 0,
+    PageSize: 10,
+  });
 
-const PlaylistPage: React.FC<IPlaylsitPageProps> = () => {
+  const [allTracks, setAllTracks] = useState<any[]>([]);
+  const [hasMore, setHasMore] = useState(true);
+  const { playTracks } = useContext(PlayerContext)!;
+  const { data, isFetching } = useGetLikesQuery(filter);
 
-  const { data: tracks } = useGetTracksQuery();
+  useEffect(() => {
+    if (data) {
+      if (data.data.length < filter.PageSize) {
+        setHasMore(false);
+      }
+
+      setAllTracks(prevTracks => [...prevTracks, ...data.data]);
+    }
+  }, [data]);
+
+  const handleScroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 && !isFetching && hasMore) {
+      setFilter(prev => ({ ...prev, PageIndex: prev.PageIndex + 1 }));
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isFetching, hasMore]);
 
   return (
-    <div>
+    <div className="">
       <div className="w-full relative">
         <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-l-[14px]" />
         <div className="w-full relative z-10 flex flex-row">
@@ -32,7 +60,9 @@ const PlaylistPage: React.FC<IPlaylsitPageProps> = () => {
         <div className="w-full relative z-10">
           <div className="flex flex-row pl-[54px] py-[20px] text-white items-center">
             
-            <PlayerPlay className="mr-[20px]"/>
+            <button onClick={allTracks.length ? () => playTracks(allTracks) : () => {}}>
+              <PlayerPlay className="mr-[20px]"/>
+            </button>
             <PlayerMix className="mr-[20px]"/>
             <PlayerDownload className="mr-[20px]"/>
             <PlayerMore className="mr-[20px]"/>
@@ -44,9 +74,9 @@ const PlaylistPage: React.FC<IPlaylsitPageProps> = () => {
       <div className="w-full relative mt-[10px]">
         <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-l-[14px]" />
         <div className="w-full relative z-10">
-          <div className="flex flex-col p-[54px]">
+          <div className="flex flex-col px-[54px] py-[16px]">
             
-            {tracks ? <List tracks={tracks}/> : null}
+            {allTracks.length ? <List tracks={allTracks}/> : null}
 
           </div>
         </div>
@@ -55,4 +85,4 @@ const PlaylistPage: React.FC<IPlaylsitPageProps> = () => {
   )
 }
 
-export default PlaylistPage
+export default FavoritePage;

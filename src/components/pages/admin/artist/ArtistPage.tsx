@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useGetArtistsQuery } from "services/artist";
 
 const ArtistPage = () => {
-    const { data: artists } = useGetArtistsQuery();
+    //const { data: artists } = useGetArtistsQuery();
 
     return (
         <div className="flex flex-col gap-4">
@@ -20,7 +20,7 @@ const ArtistPage = () => {
                 </Link>
             </div>
 
-            <ArtistsList artists={artists} />
+            <ArtistsList artists={[]} />
         </div>
     );
 };

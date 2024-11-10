@@ -37,6 +37,7 @@ export interface ITrackFilter {
   GenreId?: number;
   ArtistId?: number;
   AlbumId?: number;
+  IsRandom?: boolean;
 }
 
 export interface ITracksResponse {
