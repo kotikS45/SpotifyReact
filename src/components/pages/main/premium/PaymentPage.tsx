@@ -1,5 +1,5 @@
 import { Input } from "@headlessui/react";
-import { Button } from "components/ui/Button";
+import { Button } from "components/ui/Button.tsx";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 

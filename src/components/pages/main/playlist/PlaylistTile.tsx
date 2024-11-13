@@ -1,6 +1,6 @@
 import { IPlaylist } from "interfaces/playlist";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "utils/envData";
+import { API_URL } from "utils/envData.ts";
 
 
 interface IPlaylistTileProps {

@@ -1,5 +1,5 @@
-import GenreWaveBackground from "./GenreWaveBackground";
-import { colorSelectorDark } from "utils/colorSelector";
+import GenreWaveBackground from "./GenreWaveBackground.tsx";
+import { colorSelectorDark } from "utils/colorSelector.ts";
 
 interface IGenreTileProps {
   title: string,

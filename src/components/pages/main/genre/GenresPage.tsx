@@ -1,6 +1,6 @@
-import { useGetGenresQuery } from "services/genre";
-import { API_URL } from "utils/envData";
-import GenreTile from "./GenreTile";
+import { useGetGenresQuery } from "services/genre.ts";
+import { API_URL } from "utils/envData.ts";
+import GenreTile from "./GenreTile.tsx";
 
 const GenresPage: React.FC = () => {
   const { data: genres } = useGetGenresQuery();

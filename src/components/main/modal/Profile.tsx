@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { API_URL } from 'utils/envData';
 import Image from '../icon/Image';
 import { userApi } from 'services/user';
-import { UpdateUser } from 'interfaces/user';
 
 interface ModalProps {
   isOpen: boolean;

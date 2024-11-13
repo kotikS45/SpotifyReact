@@ -1,5 +1,4 @@
 import { Button } from "@headlessui/react";
-import LikeF from "components/main/icon/LikeF";
 import PlayerMore from "components/main/icon/PlayerMore";
 import PlayerPlay from "components/main/icon/PlayerPlay";
 import { ITrack } from "interfaces/track";
@@ -7,6 +6,7 @@ import { API_URL } from "utils/envData";
 import { timeFormat } from "utils/timeFormat";
 import { PlayerContext } from "components/main/player/PlayerProvider";
 import { useContext } from "react";
+import LikeButton from "components/pages/main/favorite/Like.tsx"
 
 interface IListLineProps {
   track: ITrack
@@ -42,9 +42,7 @@ const ListLine: React.FC<IListLineProps> = ({track}) => {
           <span>{}</span>
         </div>
         <div className="w-[10%] flex flex-row justify-end items-center">
-          <Button>
-            <LikeF className="w-[25px] h-[25px] mx-[15px]"/>
-          </Button>
+          <LikeButton className="w-[25px] h-[25px] mx-[15px]" track={track}/>
           <span className="font-roboto font-normal text-white text-sm mx-[15px]">{timeFormat(track.duration)}</span>
           <PlayerMore className="mx-[15px]" color="white"/>
         </div>

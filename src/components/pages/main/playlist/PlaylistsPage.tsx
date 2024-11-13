@@ -1,5 +1,5 @@
-import { useGetPlaylistsQuery } from "services/playlist"
-import PlaylistTile from "./PlaylistTile"
+import { useGetPlaylistsQuery } from "services/playlist.ts"
+import PlaylistTile from "./PlaylistTile.tsx"
 
 
 const PlaylistsPage = () => {
