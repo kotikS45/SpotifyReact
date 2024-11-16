@@ -1,5 +1,5 @@
 import SubscriptionCard from "./SubscriptionCard.tsx";
-import Table from "../table/Table.tsx";
+import Table from "components/pages/main/premium/table/Table.tsx";
 
 const SubscriptionsPage = () => {
     return (

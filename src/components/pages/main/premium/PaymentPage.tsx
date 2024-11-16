@@ -23,10 +23,6 @@ const PaymentPage: React.FC = () => {
   const params = new URLSearchParams(location.search);
   const selectedPlan = params.get("plan") as SubscriptionPlan;
 
-  const login = async () => {
-
-  }
-
   return (
       <div className="w-full flex flex-col items-center">
         <h3 className="text-white text-4xl font-semibold font-montserrat mt-[58px]">
@@ -92,7 +88,7 @@ const PaymentPage: React.FC = () => {
               <Button
                 type="submit"
                 variant="primary"
-                className=" bg-gradient-to-r from-[#59072F] to-[#DA0833] hover:bg-none flex justify-center items-center w-2/3 mt-[28px]">
+                className="bg-gradient-to-r from-[#59072F] to-[#DA0833] hover:bg-none flex justify-center items-center w-2/3 mt-[28px]">
                   <span className="font-roboto font-semibold text-white text-xl">Pay now</span>
               </Button>
             </div>

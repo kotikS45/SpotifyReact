@@ -1,5 +1,5 @@
-import TableHeader from "./TableHeader";
-import TableLine from "./TableLine";
+import TableHeader from "./TableHeader.tsx";
+import TableLine from "./TableLine.tsx";
 
 const Table = () => {
 

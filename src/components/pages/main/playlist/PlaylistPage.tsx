@@ -4,17 +4,13 @@ import PlayerMore from "components/main/icon/PlayerMore.tsx"
 import PlayerPlay from "components/main/icon/PlayerPlay.tsx"
 import PlayerSearch from "components/main/icon/PlayerSearch.tsx"
 import { IPlaylist } from "interfaces/playlist"
-import List from "../list/List.tsx"
+import List from "components/pages/main/playlist/tracksList/List.tsx"
 import { useLocation } from "react-router-dom";
 import { useGetTracksQuery } from "services/playlistTrack.ts"
 import { IPlaylistTrackFilter } from "interfaces/playlistTrack"
 import { useContext, useEffect, useState } from "react"
 import { PlayerContext } from "components/main/player/PlayerProvider.tsx"
 import { API_URL } from "utils/envData.ts"
-
-interface IPlaylsitPageProps {
-  playlist: IPlaylist
-}
 
 const PlaylistPage: React.FC = () => {
   const location = useLocation();
@@ -106,7 +102,7 @@ const PlaylistPage: React.FC = () => {
         <div className="w-full relative z-10">
           <div className="flex flex-col px-[54px] py-[16px]">
             
-            {allTracks.length ? <List tracks={allTracks}/> : null}
+            {allTracks.length ? <List tracks={allTracks} playlist={playlist}/> : null}
 
           </div>
         </div>
