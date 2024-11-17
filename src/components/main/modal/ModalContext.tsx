@@ -4,7 +4,7 @@ type ModalType = 'Profile' | 'Playlists' | null;
 
 interface ModalContextProps {
     modalState: { type: ModalType; content: ReactNode } | null;
-    openModal: (type: ModalType, content: ReactNode) => void;
+    openModal: (type: string, content: React.ReactNode) => void;
     closeModal: () => void;
 }
 

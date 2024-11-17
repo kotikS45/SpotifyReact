@@ -16,7 +16,7 @@ const PlaylistItem: React.FC<IPlaylistItemProps> = ({ playlist, selected }) => {
     const imageSrc = API_URL + "/Images/400_";
 
     return (
-        <div className="flex flex-row w-[400px] bg-black hover:bg-[#222] rounded-[8px]"
+        <div className="flex flex-row w-[400px] bg-black hover:bg-[#222] rounded-[8px] py-[8px] px-[16px]"
             style={selected ? { backgroundColor: "#444" } : {}}>
             <div className="w-[55px]">
                 <img src={imageSrc.concat(playlist.image)} alt={playlist.name} className="w-[55px] h-[55px] object-cover rounded-[5px]"/>
@@ -68,17 +68,17 @@ const Playlists: React.FC<ModalProps> = ({ onClose, track }) => {
             </div>
             <div className="pl-[20px] max-h-[400px] mt-[15px] overflow-y-auto">
                 {playlists?.data ? playlists.data.map((item) => (
-                    <div key={item.id} className="mr-[30px] my-[10px]">
+                    <div key={item.id} className="mr-[30px] my-[4px]">
                         <Button onClick={() => setSelected(item)}>
                             <PlaylistItem playlist={item} selected={selected == item}/>
                         </Button>
                     </div>
                 )) : null}
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-center">
                 <Button onClick={handleAdd}
-                        className="bg-gradient-to-r from-[#59072F] to-[#DA0833] hover:bg-none flex px-[10px] py-[3px] justify-center items-center w-[120px] rounded-[5px] mt-[10px]">
-                    <span className="font-roboto font-semibold text-white text-xl">Add</span>
+                        className="bg-gradient-to-r from-[#59072F] to-[#DA0833] hover:bg-none flex px-[10px] py-[3px] justify-center items-center w-[168px] h-[56px] rounded-[5px] mt-[42px]">
+                    <span className="font-roboto font-semibold text-white text-2xl">Save</span>
                 </Button>
             </div>
         </div>

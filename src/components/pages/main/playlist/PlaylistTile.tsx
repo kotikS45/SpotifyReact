@@ -17,7 +17,7 @@ const PlaylistTile: React.FC<IPlaylistTileProps> = ({ playlist }) => {
 
   return (
     <div className="flex flex-col" onClick={handleClick}>
-      <img src={imageSrc.concat(playlist.image)} alt={playlist.name} className="w-[145px] h-[145px] object-cover mx-auto rounded-[16px]"/>
+      <img src={imageSrc.concat(playlist.image)} alt={playlist.name} className="w-[145px] h-[145px] object-cover mx-auto rounded-[16px] cursor-pointer"/>
       <span className="font-roboto font-medium text-white text-base pt-[16px]">{playlist.name}</span>
     </div>
   )

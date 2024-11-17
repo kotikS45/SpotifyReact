@@ -33,7 +33,7 @@ const List: React.FC<IListProps> = ({ tracks, playlist }) => {
 
     const handleAddToPlaylist = () => {
         if (selectedTrack) {
-            openModal('Profile', <Playlists onClose={closeModal} track={selectedTrack}/>)
+            openModal('Playlists', <Playlists onClose={closeModal} track={selectedTrack}/>)
         }
         handleCloseMenu();
     };
