@@ -1,5 +1,8 @@
-import { useGetPlaylistsQuery } from "services/playlist"
-import PlaylistTile from "./PlaylistTile"
+import { useGetPlaylistsQuery } from "services/playlist.ts"
+import PlaylistTile from "./PlaylistTile.tsx"
+import {Button} from "@headlessui/react";
+import {useModal} from "components/main/modal/ModalContext.tsx";
+import PlaylistCreate from "components/main/modal/PlaylistCreate.tsx";
 
 
 const PlaylistsPage = () => {
@@ -8,6 +11,12 @@ const PlaylistsPage = () => {
     PageIndex: 0,
     IsRandom: false
   });
+
+  const { openModal, closeModal } = useModal();
+
+  const handleAddPlaylist = () => {
+    openModal('PlaylistCreate', <PlaylistCreate onClose={closeModal}/>)
+  }
 
   return (
     <div>
@@ -34,8 +43,12 @@ const PlaylistsPage = () => {
                 )) : null
               }
               <div className="flex flex-col mr-[30px] my-[15px]">
-                <img src="assets/add_playlist_button.png" alt="Add a playlist" className="w-[145px] h-[145px] object-cover mx-auto rounded-[16px] opacity-100"/>
-                <span className="font-roboto font-medium text-white text-base pt-[16px] text-center">Add a playlist</span>
+                <Button onClick={handleAddPlaylist} className="w-[145px] h-[145px]">
+                  <img src="assets/add_playlist_button.png" alt="Add a playlist"
+                       className="w-[145px] h-[145px] object-cover mx-auto rounded-[16px] opacity-100 cursor-pointer"/>
+                </Button>
+                <span
+                    className="font-roboto font-medium text-white text-base pt-[16px] text-center">Add a playlist</span>
               </div>
             </div>
             <div className="h-[200px]"></div>

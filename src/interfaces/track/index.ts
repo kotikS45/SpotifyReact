@@ -7,6 +7,7 @@ export interface ITrack {
   artistId: number,
   albumName: string,
   artistName: string,
+  isLiked: boolean,
   name: string,
   path: string,
   image: string,

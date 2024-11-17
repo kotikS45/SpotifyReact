@@ -16,23 +16,17 @@ export const likeApi = createApi({
       providesTags: ["Likes"],
     }),
 
-    createLike: builder.mutation<void, { TrackId: number }>({
-      query: (track) => {
-        const formData = new FormData();
-        formData.append("TrackId", track.TrackId.toString());
-    
-        return {
-          url: "create",
-          method: "POST",
-          body: formData,
-        };
-      },
+    like: builder.mutation<void, number>({
+      query: (trackId) => ({
+        url: `Like/${trackId}`,
+        method: "POST",
+      }),
       invalidatesTags: ["Likes"],
     }),
 
-    deleteLike: builder.mutation<void, number>({
-      query: (id) => ({
-        url: `delete/${id}`,
+    unlike: builder.mutation<void, number>({
+      query: (trackId) => ({
+        url: `Unlike/${trackId}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Likes"],
@@ -42,6 +36,6 @@ export const likeApi = createApi({
 
 export const {
   useGetLikesQuery,
-  useCreateLikeMutation,
-  useDeleteLikeMutation,
+  useLikeMutation,
+  useUnlikeMutation,
 } = likeApi;

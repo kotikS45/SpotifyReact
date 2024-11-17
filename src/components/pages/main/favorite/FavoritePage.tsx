@@ -1,13 +1,13 @@
-import PlayerDownload from "components/main/icon/PlayerDownload"
-import PlayerMix from "components/main/icon/PlayerMix"
-import PlayerPlay from "components/main/icon/PlayerPlay"
-import PlayerMore from "components/main/icon/PlayerMore"
-import PlayerSearch from "components/main/icon/PlayerSearch"
-import List from "./list/List"
-import { useGetLikesQuery } from "services/like"
+import PlayerDownload from "components/main/icon/PlayerDownload.tsx"
+import PlayerMix from "components/main/icon/PlayerMix.tsx"
+import PlayerPlay from "components/main/icon/PlayerPlay.tsx"
+import PlayerMore from "components/main/icon/PlayerMore.tsx"
+import PlayerSearch from "components/main/icon/PlayerSearch.tsx"
+import { useGetLikesQuery } from "services/like.ts"
 import { ITrackFilter } from "interfaces/track"
 import { useContext, useEffect, useState } from "react"
-import { PlayerContext } from "components/main/player/PlayerProvider"
+import { PlayerContext } from "components/main/player/PlayerProvider.tsx"
+import List from "components/pages/main/favorite/tracksList/List.tsx";
 
 const FavoritePage = () => {
   const [filter, setFilter] = useState<ITrackFilter>({

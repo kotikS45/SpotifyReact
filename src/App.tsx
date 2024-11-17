@@ -7,62 +7,65 @@ import LoginPage from "components/pages/auth/LoginPage.tsx";
 import RegisterPage from "components/pages/auth/RegisterPage.tsx";
 import Layout from "components/main/Layout.tsx";
 import BackgroundSetter from "components/BackgroundSetter";
-import SubscriptionsPage from "components/pages/main/SubscriptionsPage";
-import PaymentPage from "components/pages/main/PaymentPage";
-import GenresPage from "components/pages/main/GenresPage";
-import PlaylistsPage from "components/pages/main/PlaylistsPage";
-import FavoritePage from "components/pages/main/FavoritePage";
+import SubscriptionsPage from "components/pages/main/premium/SubscriptionsPage.tsx";
+import PaymentPage from "components/pages/main/premium/PaymentPage.tsx";
+import GenresPage from "components/pages/main/genre/GenresPage.tsx";
+import PlaylistsPage from "components/pages/main/playlist/PlaylistsPage.tsx";
+import FavoritePage from "components/pages/main/favorite/FavoritePage.tsx";
 import { PlayerProvider } from "components/main/player/PlayerProvider";
 import PrivateRoute from "components/pages/auth/PrivateRoute";
 import ResetPasswordPage from "components/pages/auth/ResetPasswordPage";
 import ForgotPasswordPage from "components/pages/auth/ForgotPasswordPage";
-import ArtistsPage from "components/pages/main/ArtistsPage.tsx";
+import ArtistsPage from "components/pages/main/artist/ArtistsPage.tsx";
 import ArtistPage from "components/pages/admin/artist/ArtistPage";
-import PlaylistPage from "components/pages/main/PlaylistPage";
+import PlaylistPage from "components/pages/main/playlist/PlaylistPage.tsx";
 import HomePage from "components/pages/main/home/HomePage";
+import {ModalProvider} from "components/main/modal/ModalContext.tsx";
 
 const App = () => {
   return (
-    <PlayerProvider>
-      <BackgroundSetter/>
-      <Routes>
-      
-        <Route element={<PrivateRoute/>}>
-          <Route path="/" element={<Layout/>}>
-            <Route path="/" element={<HomePage/>}/>
-            <Route path="favorite" element={<FavoritePage/>}/>
+      <ModalProvider>
+        <PlayerProvider>
+          <BackgroundSetter/>
+          <Routes>
 
-            <Route path="albums" element={<></>}/>
-            <Route path="playlists" element={<PlaylistsPage/>}/>
-            <Route path="playlist" element={<PlaylistPage />} />
-            <Route path="artists" element={<ArtistsPage/>}/>
-            <Route path="account" element={<></>}/>
-        
-            <Route path="friends" element={<></>}/>
-            <Route path="genres" element={<GenresPage/>}/>
-            <Route path="notification" element={<></>}/>
-        
-            <Route path="premium" element={<SubscriptionsPage/>}/>
-            <Route path="payment" element={<PaymentPage/>}/>
-          </Route>
+            <Route element={<PrivateRoute/>}>
+              <Route path="/" element={<Layout/>}>
+                <Route path="/" element={<HomePage/>}/>
+                <Route path="favorite" element={<FavoritePage/>}/>
 
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route path="artists">
-              <Route path="list" element={<ArtistPage />} />
-              <Route path="create" element={<ArtistCreatePage />} />
+                <Route path="albums" element={<></>}/>
+                <Route path="playlists" element={<PlaylistsPage/>}/>
+                <Route path="playlist" element={<PlaylistPage />} />
+                <Route path="artists" element={<ArtistsPage/>}/>
+                <Route path="account" element={<></>}/>
+
+                <Route path="friends" element={<></>}/>
+                <Route path="genres" element={<GenresPage/>}/>
+                <Route path="notification" element={<></>}/>
+
+                <Route path="premium" element={<SubscriptionsPage/>}/>
+                <Route path="payment" element={<PaymentPage/>}/>
+              </Route>
+
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route path="artists">
+                  <Route path="list" element={<ArtistPage />} />
+                  <Route path="create" element={<ArtistCreatePage />} />
+                </Route>
+              </Route>
             </Route>
-          </Route>
-        </Route>
 
-        <Route element={<AccountLayout />}>
-          <Route path="register" element={<RegisterPage/>}/>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="resetPassword" element={<ResetPasswordPage />} />
-          <Route path="forgotPassword" element={<ForgotPasswordPage/>} />
-        </Route>
-    
-      </Routes>
-    </PlayerProvider>
+            <Route element={<AccountLayout />}>
+              <Route path="register" element={<RegisterPage/>}/>
+              <Route path="login" element={<LoginPage />} />
+              <Route path="resetPassword" element={<ResetPasswordPage />} />
+              <Route path="forgotPassword" element={<ForgotPasswordPage/>} />
+            </Route>
+
+          </Routes>
+        </PlayerProvider>
+      </ModalProvider>
   );
 }
 export default App

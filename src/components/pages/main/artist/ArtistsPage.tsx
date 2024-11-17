@@ -1,8 +1,8 @@
 import { IArtist, IArtistFilter } from "interfaces/artist";
 import { useEffect, useState } from "react";
-import { useGetArtistsQuery } from "services/artist";
-import ArtistTile from "./ArtistTile";
-import { API_URL } from "utils/envData";
+import { useGetArtistsQuery } from "services/artist.ts";
+import ArtistTile from "./ArtistTile.tsx";
+import { API_URL } from "utils/envData.ts";
 
 
 const ArtistsPage = () => {

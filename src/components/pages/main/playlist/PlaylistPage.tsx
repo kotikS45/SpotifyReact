@@ -1,24 +1,24 @@
-import PlayerDownload from "components/main/icon/PlayerDownload"
-import PlayerMix from "components/main/icon/PlayerMix"
-import PlayerMore from "components/main/icon/PlayerMore"
-import PlayerPlay from "components/main/icon/PlayerPlay"
-import PlayerSearch from "components/main/icon/PlayerSearch"
+import PlayerDownload from "components/main/icon/PlayerDownload.tsx"
+import PlayerMix from "components/main/icon/PlayerMix.tsx"
+import PlayerMore from "components/main/icon/PlayerMore.tsx"
+import PlayerPlay from "components/main/icon/PlayerPlay.tsx"
+import PlayerSearch from "components/main/icon/PlayerSearch.tsx"
 import { IPlaylist } from "interfaces/playlist"
-import List from "./list/List"
-import { useLocation } from "react-router-dom";
-import { useGetTracksQuery } from "services/playlistTrack"
+import List from "components/pages/main/playlist/tracksList/List.tsx"
+import {useLocation, useNavigate} from "react-router-dom";
+import {useGetTracksQuery} from "services/playlistTrack.ts"
 import { IPlaylistTrackFilter } from "interfaces/playlistTrack"
-import { useContext, useEffect, useState } from "react"
-import { PlayerContext } from "components/main/player/PlayerProvider"
-import { API_URL } from "utils/envData"
-
-interface IPlaylsitPageProps {
-  playlist: IPlaylist
-}
+import React, { useContext, useEffect, useState } from "react"
+import { PlayerContext } from "components/main/player/PlayerProvider.tsx"
+import { API_URL } from "utils/envData.ts"
+import {Button} from "@headlessui/react";
+import {useDeletePlaylistMutation} from "services/playlist.ts";
+import playlists from "components/main/modal/Playlists.tsx";
 
 const PlaylistPage: React.FC = () => {
   const location = useLocation();
   const playlist = location.state?.playlist as IPlaylist;
+  const [menuPosition, setMenuPosition] = useState<{ x: number; y: number } | null>(null);
 
   const [filter, setFilter] = useState<IPlaylistTrackFilter>({
     PageIndex: 0,
@@ -32,6 +32,8 @@ const PlaylistPage: React.FC = () => {
   const [hasMore, setHasMore] = useState(true);
   const { playTracks } = useContext(PlayerContext)!;
   const { data, isFetching } = useGetTracksQuery(filter);
+  const [deletePlaylist] = useDeletePlaylistMutation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data) {
@@ -43,10 +45,30 @@ const PlaylistPage: React.FC = () => {
     }
   }, [data]);
 
+  const openContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMenuPosition({ x: 50, y: 50 });
+  };
+
+  const handleCloseMenu = () => {
+    setMenuPosition(null);
+  };
+
   const handleScroll = () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 && !isFetching && hasMore) {
       setFilter(prev => ({ ...prev, PageIndex: prev.PageIndex + 1 }));
     }
+  };
+
+  const handleDeletePlaylist = async () => {
+    try {
+      await deletePlaylist(playlist.id).unwrap();
+      navigate("/");
+    } catch (error) {
+      console.error("Failed: ", error);
+    }
+
+    handleCloseMenu();
   };
 
   useEffect(() => {
@@ -95,18 +117,37 @@ const PlaylistPage: React.FC = () => {
             </button>
             <PlayerMix className="mr-[20px]"/>
             <PlayerDownload className="mr-[20px]"/>
-            <PlayerMore className="mr-[20px]"/>
+            <Button onClick={(e) => openContextMenu(e)}>
+              <PlayerMore className="mr-[20px]"/>
+            </Button>
             <PlayerSearch className="mr-[20px]"/>
-            
+
+
+            {menuPosition && (
+                <>
+                  <div
+                      className="relative bg-black rounded-[5px] z-[100] w-[160px] py-[2px]"
+                  >
+                    <button
+                        className="w-full py-[1px] text-sm hover:bg-[#3B3B3B] text-white cursor-pointer rounded-[5px] font-roboto text-lg font-semibold"
+                        onClick={handleDeletePlaylist}
+                    >
+                      Delete playlist
+                    </button>
+                  </div>
+                  <div className="fixed inset-0" onClick={handleCloseMenu}></div>
+                </>
+            )}
           </div>
         </div>
       </div>
       <div className="w-full relative mt-[10px]">
         <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-l-[14px]" />
         <div className="w-full relative z-10">
-          <div className="flex flex-col px-[54px] py-[16px]">
+          <div className="flex flex-col px-[54px] pt-[16px] pb-[60px]">
             
-            {allTracks.length ? <List tracks={allTracks}/> : null}
+            {allTracks.length ? <List tracks={allTracks} playlist={playlist}/> :
+            <span className="text-4xl text-white font-montserrat w-full text-center font-bold py-[40px]">Playlist is empty</span>}
 
           </div>
         </div>
