@@ -18,7 +18,7 @@ import ResetPasswordPage from "components/pages/auth/ResetPasswordPage";
 import ForgotPasswordPage from "components/pages/auth/ForgotPasswordPage";
 import ArtistsPage from "components/pages/main/ArtistsPage.tsx";
 import ArtistPage from "components/pages/admin/artist/ArtistPage";
-import PlaylistPage from "components/pages/main/PlaylistPage";
+import PlaylistPage from "components/pages/main/PlaylistPage.tsx";
 import AlbumsPage from "components/pages/main/AlbumsPage";
 import HomePage from "components/pages/main/home/HomePage";
 
