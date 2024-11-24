@@ -1,5 +1,5 @@
 import { Input } from "@headlessui/react";
-import { Button } from "components/ui/Button";
+import { Button } from "components/ui/Button.tsx";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -22,10 +22,6 @@ const PaymentPage: React.FC = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const selectedPlan = params.get("plan") as SubscriptionPlan;
-
-  const login = async () => {
-
-  }
 
   return (
       <div className="w-full flex flex-col items-center">
@@ -92,7 +88,7 @@ const PaymentPage: React.FC = () => {
               <Button
                 type="submit"
                 variant="primary"
-                className=" bg-gradient-to-r from-[#59072F] to-[#DA0833] hover:bg-none flex justify-center items-center w-2/3 mt-[28px]">
+                className="bg-gradient-to-r from-[#59072F] to-[#DA0833] hover:bg-none flex justify-center items-center w-2/3 mt-[28px]">
                   <span className="font-roboto font-semibold text-white text-xl">Pay now</span>
               </Button>
             </div>
