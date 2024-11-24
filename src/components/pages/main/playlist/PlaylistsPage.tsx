@@ -3,6 +3,7 @@ import PlaylistTile from "./PlaylistTile.tsx"
 import {Button} from "@headlessui/react";
 import {useModal} from "components/main/modal/ModalContext.tsx";
 import PlaylistCreate from "components/main/modal/PlaylistCreate.tsx";
+import EmptyList from "components/main/error/EmptyList.tsx";
 
 
 const PlaylistsPage = () => {
@@ -33,14 +34,14 @@ const PlaylistsPage = () => {
       <div className="w-full relative mt-[10px]">
         <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-l-[14px]" />
         <div className="w-full relative z-10">
-          <div className="flex flex-col p-[54px]">
+          {playlists?.data ? <div className="flex flex-col p-[54px]">
             <span className="font-montserrat font-semibold text-2xl text-loginTextColor2">Your playlists</span>
             <div className="mt-[22px] w-full flex flex-row flex-wrap justify-start items-start">
               {playlists?.data ? playlists.data.map((item) => (
-                <div key={item.id} className="mr-[30px] my-[15px]">
-                  <PlaylistTile playlist={item}/>
-                </div>
-                )) : null
+                  <div key={item.id} className="mr-[30px] my-[15px]">
+                    <PlaylistTile playlist={item}/>
+                  </div>
+              )) : null
               }
               <div className="flex flex-col mr-[30px] my-[15px]">
                 <Button onClick={handleAddPlaylist} className="w-[145px] h-[145px]">
@@ -52,7 +53,7 @@ const PlaylistsPage = () => {
               </div>
             </div>
             <div className="h-[200px]"></div>
-          </div>
+          </div> : <EmptyList/>}
         </div>
       </div>
     </div>

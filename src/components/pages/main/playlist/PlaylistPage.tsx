@@ -13,7 +13,7 @@ import { PlayerContext } from "components/main/player/PlayerProvider.tsx"
 import { API_URL } from "utils/envData.ts"
 import {Button} from "@headlessui/react";
 import {useDeletePlaylistMutation} from "services/playlist.ts";
-import playlists from "components/main/modal/Playlists.tsx";
+import EmptyList from "components/main/error/EmptyList.tsx";
 
 const PlaylistPage: React.FC = () => {
   const location = useLocation();
@@ -146,8 +146,7 @@ const PlaylistPage: React.FC = () => {
         <div className="w-full relative z-10">
           <div className="flex flex-col px-[54px] pt-[16px] pb-[60px]">
             
-            {allTracks.length ? <List tracks={allTracks} playlist={playlist}/> :
-            <span className="text-4xl text-white font-montserrat w-full text-center font-bold py-[40px]">Playlist is empty</span>}
+            {allTracks.length ? <List tracks={allTracks} playlist={playlist}/> : <EmptyList/>}
 
           </div>
         </div>
