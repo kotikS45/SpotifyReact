@@ -72,7 +72,7 @@ const HomePage = () => {
             {albums ? albums.data.map((item) => (
                 <SwiperSlide key={item.id} style={{padding: 0, margin: 0}}>
                   <div className="my-[15px]">
-                    <AlbumTile album={item}/>
+                    <AlbumTile album={item} width="200px" height="200px"/>
                   </div>
                 </SwiperSlide>
             )) : null}
