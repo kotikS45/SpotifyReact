@@ -8,6 +8,7 @@ import { ITrackFilter } from "interfaces/track"
 import { useContext, useEffect, useState } from "react"
 import { PlayerContext } from "components/main/player/PlayerProvider.tsx"
 import List from "components/pages/main/favorite/tracksList/List.tsx";
+import EmptyList from "components/main/error/EmptyList.tsx";
 
 const FavoritePage = () => {
   const [filter, setFilter] = useState<ITrackFilter>({
@@ -76,7 +77,7 @@ const FavoritePage = () => {
         <div className="w-full relative z-10">
           <div className="flex flex-col px-[54px] py-[16px]">
             
-            {allTracks.length ? <List tracks={allTracks}/> : null}
+            {allTracks.length ? <List tracks={allTracks}/> : <EmptyList/>}
 
           </div>
         </div>

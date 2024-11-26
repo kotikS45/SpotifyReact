@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useGetArtistsQuery } from "services/artist.ts";
 import ArtistTile from "./ArtistTile.tsx";
 import { API_URL } from "utils/envData.ts";
+import EmptyList from "components/main/error/EmptyList.tsx";
 
 
 const ArtistsPage = () => {
@@ -55,11 +56,14 @@ const ArtistsPage = () => {
         <div className="absolute inset-0 bg-black opacity-75 z-0 rounded-l-[14px]" />
         <div className="w-full relative z-10">
           <div className="flex flex-row flex-wrap px-[54px] py-[16px]">
-            {allArtists ? allArtists.map((item) => (
+            {allArtists.length ? allArtists.map((item) => (
               <div key={item.id} className="mx-[15px] my-[25px]">
                 <ArtistTile name={item.name} albumsCount={item.albumsCount} tracksCount={item.tracksCount} image={imageSrc.concat(item.image)}/>
               </div>
-            )) : null}
+            )) :
+            <div className="w-full flex justify-center items-center">
+              <EmptyList/>
+            </div>}
           </div>
         </div>
       </div>
