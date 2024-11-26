@@ -52,7 +52,7 @@ const PlaylistCreate: React.FC<ModalProps> = ({ onClose }) => {
                              className="w-full h-full object-cover rounded-[6px]"/> : null}
                         <Button className="absolute">
                             <label htmlFor="image-upload">
-                                <Image className="w-[100px] h-[100px] cursor-pointer"/>
+                                <Image className="w-[100px] h-[100px] cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-500"/>
                             </label>
                             <input id="image-upload" type="file" accept="image/*" className="hidden"
                                    onChange={handleImageChange}/>
