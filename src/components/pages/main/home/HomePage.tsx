@@ -16,7 +16,7 @@ const HomePage = () => {
   const {data: albums} = useGetAlbumsQuery({
     PageIndex: 0,
     PageSize: 10,
-    isRandom: true,
+    IsRandom: true,
   });
 
   const {data: tracks} = useGetTracksQuery({

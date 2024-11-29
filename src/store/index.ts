@@ -10,6 +10,7 @@ import { trackApi } from "services/track";
 import { likeApi } from "services/like";
 import { playlistTracksApi } from "services/playlistTrack";
 import { albumApi } from "services/album";
+import {followerApi} from "services/follower.ts";
 
 export const store = configureStore({
     reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
         [playlistApi.reducerPath]: playlistApi.reducer,
         [trackApi.reducerPath]: trackApi.reducer,
         [likeApi.reducerPath]: likeApi.reducer,
+        [followerApi.reducerPath]: followerApi.reducer,
         [playlistTracksApi.reducerPath]: playlistTracksApi.reducer,
         [albumApi.reducerPath]: albumApi.reducer,
     },
@@ -31,6 +33,7 @@ export const store = configureStore({
           playlistApi.middleware,
           trackApi.middleware,
           likeApi.middleware,
+          followerApi.middleware,
           playlistTracksApi.middleware,
           albumApi.middleware,
         ),

@@ -1,27 +1,27 @@
+import { IArtist } from "interfaces/artist";
+import {useNavigate} from "react-router-dom";
+import {API_URL} from "utils/envData.ts";
+
 interface IArtistTileProps {
-  name: string,
-  image: string,
-  albumsCount: number,
-  tracksCount: number
+  artist: IArtist;
 }
 
-const ArtistTile: React.FC<IArtistTileProps> = ({ name, image, albumsCount, tracksCount }) => {
+const ArtistTile: React.FC<IArtistTileProps> = ({ artist }) => {
 
-  return(
-    <div className="w-[380px] flex flex-row">
-      <img src={image} className="w-[154px] h-[154px] object-cover rounded-[14px]"/>
-      <div className="font-roboto font-medium ml-[30px] flex flex-col text-sm text-white">
-        <span className="text-xl mt-[11px]">{name}</span>
-        <div className="mt-[30px]">
-          <span className="text-[#BCBCBC]">Albums - </span>
-          <span>{albumsCount}</span>
-        </div>
-        <div className="mt-[6px]">
-          <span className="text-[#BCBCBC]">Tracks - </span>
-          <span>{tracksCount}</span>
-        </div>
+  const imageSrc = API_URL + "/Images/1200_";
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/artist", { state: { artist } });
+  };
+
+  return (
+      <div className="relative w-full h-[260px] bg-black rounded-l-[14px] cursor-pointer flex flex-row" onClick={handleClick}>
+        <span className="absolute font-montserrat left-[50px] top-[60px] font-extrabold text-7xl
+          text-white z-20 hover:underline decoration-2 underline-offset-8">{artist.name}</span>
+        <img className="absolute right-[-100px] w-[1270px] h-[260px] object-cover object-center" src={imageSrc.concat(artist.image)} alt={artist.name}/>
+        <div className="absolute right-[670px] w-[500px] h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"/>
       </div>
-    </div>
   )
 }
 
