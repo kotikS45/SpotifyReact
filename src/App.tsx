@@ -17,12 +17,12 @@ import PrivateRoute from "components/pages/auth/PrivateRoute";
 import ResetPasswordPage from "components/pages/auth/ResetPasswordPage";
 import ForgotPasswordPage from "components/pages/auth/ForgotPasswordPage";
 import ArtistsPage from "components/pages/main/artist/ArtistsPage.tsx";
-import ArtistPage from "components/pages/admin/artist/ArtistPage";
 import PlaylistPage from "components/pages/main/playlist/PlaylistPage.tsx";
 import HomePage from "components/pages/main/home/HomePage";
 import AlbumsPage from "components/pages/main/album/AlbumsPage.tsx";
 import {ModalProvider} from "components/main/modal/ModalContext.tsx";
 import AlbumPage from "components/pages/main/album/AlbumPage.tsx";
+import ArtistPage from "components/pages/main/artist/ArtistPage.tsx";
 
 const App = () => {
   return (
@@ -41,6 +41,7 @@ const App = () => {
                 <Route path="playlists" element={<PlaylistsPage/>}/>
                 <Route path="playlist" element={<PlaylistPage />} />
                 <Route path="artists" element={<ArtistsPage/>}/>
+                <Route path="artist" element={<ArtistPage/>}/>
                 <Route path="account" element={<></>}/>
 
                 <Route path="friends" element={<></>}/>

@@ -3,7 +3,9 @@ export interface IArtist {
   name: string,
   image: string,
   albumsCount: number,
-  tracksCount: number
+  tracksCount: number,
+  followers: number,
+  isFollowed: boolean,
 }
 
 export interface IArtistCreate {

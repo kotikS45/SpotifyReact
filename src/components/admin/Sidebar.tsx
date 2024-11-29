@@ -143,7 +143,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                             <SidebarLinkGroupMenu
                                                 open={open}
                                                 links={[
-                                                    { to: "/admin/artists/tracksList", label: "List" },
+                                                    { to: "/admin/artists/allTracksList", label: "List" },
                                                     { to: "/admin/artists/create", label: "Create" },
                                                     // { to: "/ecommerce/invoices", label: "Invoices" },
                                                 ]}
@@ -195,7 +195,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
                                             </SidebarLinkGroupTitle>
                                             <SidebarLinkGroupMenu
                                                 open={open}
-                                                links={[{ to: "/admin/tracks/tracksList", label: "List" }]}
+                                                links={[{ to: "/admin/tracks/allTracksList", label: "List" }]}
                                             />
                                             <SidebarLinkGroupMenu
                                                 open={open}

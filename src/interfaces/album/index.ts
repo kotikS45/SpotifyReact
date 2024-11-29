@@ -11,6 +11,7 @@ export interface IAlbumFilter {
   PageIndex?: number;
   PageSize?: number;
   SearchTerm?: string;
+  ArtistId?: number;
   IsRandom?: boolean;
 }
 
