@@ -11,6 +11,7 @@ import { likeApi } from "services/like";
 import { playlistTracksApi } from "services/playlistTrack";
 import { albumApi } from "services/album";
 import {followerApi} from "services/follower.ts";
+import {searchApi} from "services/search.ts";
 
 export const store = configureStore({
     reducer: {
@@ -24,18 +25,20 @@ export const store = configureStore({
         [followerApi.reducerPath]: followerApi.reducer,
         [playlistTracksApi.reducerPath]: playlistTracksApi.reducer,
         [albumApi.reducerPath]: albumApi.reducer,
+        [searchApi.reducerPath]: searchApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
-          userApi.middleware,
-          artistApi.middleware,
-          genreApi.middleware,
-          playlistApi.middleware,
-          trackApi.middleware,
-          likeApi.middleware,
-          followerApi.middleware,
-          playlistTracksApi.middleware,
-          albumApi.middleware,
+            userApi.middleware,
+            artistApi.middleware,
+            genreApi.middleware,
+            playlistApi.middleware,
+            trackApi.middleware,
+            likeApi.middleware,
+            followerApi.middleware,
+            playlistTracksApi.middleware,
+            albumApi.middleware,
+            searchApi.middleware,
         ),
 });
 
