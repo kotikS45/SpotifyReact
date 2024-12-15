@@ -13,7 +13,7 @@ const GenresPage: React.FC = () => {
         <div className="flex flex-row flex-wrap px-[30px] py-[60px]">
           {genres ? genres.map((genre) => (
             <div key={genre.id} className="m-[15px]">
-              <GenreTile title={genre.name} imageUrl={imageSrc.concat(genre.image)}/>
+              <GenreTile id={genre.id} title={genre.name} imageUrl={imageSrc.concat(genre.image)}/>
             </div>
           )) : null}
         </div>

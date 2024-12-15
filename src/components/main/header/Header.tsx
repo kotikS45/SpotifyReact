@@ -4,18 +4,22 @@ import Friends from "../icon/Friends";
 import Notifications from "../icon/Notifications";
 import HeaderLink from "../link/HeaderLink";
 import SearchBar from "./SearchBar";
-import HeaderSearch from "../icon/HeaderSearch";
 import { logOut } from "store/slice/userSlice";
 import { API_URL } from "utils/envData";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "store";
 import { userApi } from "services/user";
+import {ISearch} from "interfaces/search";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const handleSearch = (props: ISearch) => {
+    navigate("/search", { state: { search: props } });
+  };
 
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -39,10 +43,7 @@ const Header = () => {
     <header className="sticky z-40 top-0 right-0 flex items-center justify-end px-[10px] w-full h-[78px] bg-black rounded-b-[14px] opacity-85">
       <div className="flex ml-auto mr-auto py-[20px]">
         <HeaderLink icon={<Friends className="w-[18px] h-[18px]"/>} to="/friends"/>
-        <div className="flex items-center transition duration-150 mx-[7px] h-[37px] bg-[#3b3b3b] rounded-full">
-          <HeaderSearch className="w-[17px] h-[17px] ml-[16px]" color="#FFFFFF"/>
-          <SearchBar className="min-w-[350px] pr-[10px]"/>
-        </div>
+        <SearchBar className="min-w-[350px] pr-[10px]" handleSearch={handleSearch} />
         <HeaderLink icon={<File className="w-[19px] h-[18px]"/>} to="/genres"/>
         <HeaderLink icon={<Notifications className="w-[17px] h-[18px]"/>} to="/notification"/>
       </div>

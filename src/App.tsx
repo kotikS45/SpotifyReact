@@ -23,6 +23,7 @@ import AlbumsPage from "components/pages/main/album/AlbumsPage.tsx";
 import {ModalProvider} from "components/main/modal/ModalContext.tsx";
 import AlbumPage from "components/pages/main/album/AlbumPage.tsx";
 import ArtistPage from "components/pages/main/artist/ArtistPage.tsx";
+import SearchPage from "components/pages/main/search/SearchPage.tsx";
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
                 <Route path="account" element={<></>}/>
 
                 <Route path="friends" element={<></>}/>
+                <Route path="search" element={<SearchPage/>}/>
                 <Route path="genres" element={<GenresPage/>}/>
                 <Route path="notification" element={<></>}/>
 
