@@ -1,4 +1,4 @@
-import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
+import {CredentialResponse, GoogleLogin} from "@react-oauth/google";
 import { Button } from "components/ui/Button.tsx";
 import { Input } from "components/ui/Input.tsx";
 import { User } from "interfaces/user";
@@ -30,12 +30,11 @@ const LoginPage: React.FC = () => {
             console.log(res.data.token);
             setUser(res.data.token);
             
-        } else {
-            
         }
     };
 
-    const authSuccess = async (credentialResponse: CredentialResponse) => {
+    const authSuccess = async (credentialResponse: CredentialResponse) =>  {
+        console.log("++++", credentialResponse)
         const res = await googleLogin({
             credential: credentialResponse.credential || "",
         });
@@ -43,8 +42,6 @@ const LoginPage: React.FC = () => {
 
         if (res && "data" in res && res.data) {
             setUser(res.data.token);
-        } else {
-            
         }
     };
 
@@ -122,18 +119,27 @@ const LoginPage: React.FC = () => {
                         <hr className="w-[100%]" style={{ borderTop: '1px solid white' }}/>
                     </div>
                 </div>
-                {/* <div className="flex justify-center items-cente text-white">
-                    <GoogleLogin
-                        useOneTap
-                        locale="uk"
-                        size="large"
-                        onSuccess={authSuccess}
-                        onError={authError}
-                    />
-                </div> */}
+                <div className="relative flex justify-center items-center w-full mt-[20px]">
+                    <button
+                        className="absolute left-auto right-auto inset-0 w-3/5 bg-gradient-to-r
+                        from-[#9E0026] to-[#360827] flex items-center justify-center py-[6px] rounded-full"
+                        style={{pointerEvents: 'none'}}
+                    >
+                        <img src="assets/google_icon.png" alt="google" className="w-[24px] h-[24px]"/>
+                    </button>
+                    <div className="opacity-0 w-3/5">
+                        <GoogleLogin
+                            useOneTap
+                            locale="uk"
+                            size="large"
+                            onSuccess={authSuccess}
+                            onError={authError}
+                        />
+                    </div>
+                </div>
                 <div className="flex justify-center pt-9 pb-9">
                     <span className="text-white text-[18px]">Need an account?</span>
-                    &nbsp; { }
+                    &nbsp; {}
                     <a className="text-loginTextColor2 text-[18px] m1-2" href="/register">Sign up</a>
                 </div>
             </div>

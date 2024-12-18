@@ -70,7 +70,7 @@ export const userApi = createApi({
                 formData.append("credential", data.credential);
 
                 return {
-                    url: "GoogleSignIn",
+                    url: "GoogleLogin",
                     method: "POST",
                     body: formData,
                 };
