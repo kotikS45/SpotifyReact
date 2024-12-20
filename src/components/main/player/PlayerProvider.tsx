@@ -43,6 +43,22 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({ children }) => {
     if (tracks) {
       playTrackByIndex();
     }
+
+    const handleTrackEnd = () => {
+      if (currentTrackIndex + 1 == tracks?.length){
+        playPause()
+      }
+      else {
+        playNext();
+      }
+    };
+
+    const audioElement = audioRef.current;
+    audioElement.addEventListener('ended', handleTrackEnd);
+
+    return () => {
+      audioElement.removeEventListener('ended', handleTrackEnd);
+    };
   }, [tracks, currentTrackIndex]);
 
   const playTrackByIndex = () => {
