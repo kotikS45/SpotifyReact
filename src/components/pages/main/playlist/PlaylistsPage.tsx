@@ -7,7 +7,7 @@ import EmptyList from "components/main/error/EmptyList.tsx";
 
 
 const PlaylistsPage = () => {
-  const { data: playlists } = useGetPlaylistsQuery({
+  const { data: playlists, refetch } = useGetPlaylistsQuery({
     PageSize: 30,
     PageIndex: 0,
     IsRandom: false
@@ -16,8 +16,11 @@ const PlaylistsPage = () => {
   const { openModal, closeModal } = useModal();
 
   const handleAddPlaylist = () => {
-    openModal('PlaylistCreate', <PlaylistCreate onClose={closeModal}/>)
-  }
+    openModal("PlaylistCreate", <PlaylistCreate onClose={() => {
+      closeModal();
+      refetch();
+    }} />);
+  };
 
   return (
     <div>
