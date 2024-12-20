@@ -42,10 +42,14 @@ const Header = () => {
   return (
     <header className="sticky z-40 top-0 right-0 flex items-center justify-end px-[10px] w-full h-[78px] bg-black rounded-b-[14px] opacity-85">
       <div className="flex ml-auto mr-auto py-[20px]">
-        <HeaderLink icon={<Friends className="w-[18px] h-[18px]"/>} to="/friends"/>
+        <div className="hidden">
+          <HeaderLink icon={<Friends className="w-[18px] h-[18px]"/>} to="/friends"/>
+        </div>
         <SearchBar className="min-w-[350px] pr-[10px]" handleSearch={handleSearch} />
         <HeaderLink icon={<File className="w-[19px] h-[18px]"/>} to="/genres"/>
-        <HeaderLink icon={<Notifications className="w-[17px] h-[18px]"/>} to="/notification"/>
+        <div className="hidden">
+          <HeaderLink icon={<Notifications className="w-[17px] h-[18px]"/>} to="/notification"/>
+        </div>
       </div>
       <div className="flex items-center">
         <NavLink className="bg-gradient-to-r from-[#A30028] to-[#FB2645] text-white mr-[18px] py-[6px] px-[34px] rounded-full text-[12px] font-roboto"

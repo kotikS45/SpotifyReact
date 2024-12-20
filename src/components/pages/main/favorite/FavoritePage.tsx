@@ -26,8 +26,12 @@ const FavoritePage = () => {
       if (data.data.length < filter.PageSize) {
         setHasMore(false);
       }
-
-      setAllTracks(prevTracks => [...prevTracks, ...data.data]);
+      setAllTracks((prevTracks) => {
+        const newTracks = data.data.filter(
+            (track) => !prevTracks.some((prevTrack) => prevTrack.id === track.id)
+        );
+        return [...prevTracks, ...newTracks];
+      });
     }
   }, [data]);
 

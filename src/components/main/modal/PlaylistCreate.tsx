@@ -25,6 +25,7 @@ const PlaylistCreate: React.FC<ModalProps> = ({ onClose }) => {
                     image: image
                 }).unwrap();
                 console.log(`Success`);
+
             } catch (error) {
                 console.error("Failed: ", error);
             }
