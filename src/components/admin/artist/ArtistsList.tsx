@@ -43,12 +43,10 @@ const ArtistsList: React.FC<ArtistsListVm> = (props) => {
                         <td className="px-6 py-4 text-right space-x-5">
                             <Button
                                 onClick={() => navigate(`/admin/artists/edit/${artist.id}`)}
-                                variant="icon"
-                                size="iconmd"
                             >
                                 <IconEdit className="text-blue-700" />
                             </Button>
-                            <Button onClick={() => deleteArtist(artist.id)} variant="icon" size="iconmd">
+                            <Button onClick={() => deleteArtist(artist.id)}>
                                 <IconTrash className="text-red-500" />
                             </Button>
                         </td>

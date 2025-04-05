@@ -60,7 +60,7 @@ const ArtistCreateForm = () => {
             {errors.image && <Attention>{String(errors.image.message)}</Attention>}
         </div>
         <div className="flex items-center justify-center">
-            <Button size="full">
+            <Button>
                 {createArtistIsLoading ? <IconLoader2 className="animate-spin" /> : "Add artist"}
             </Button>
         </div>

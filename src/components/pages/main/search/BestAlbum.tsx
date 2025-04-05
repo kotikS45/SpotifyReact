@@ -17,8 +17,6 @@ const BestAlbum: React.FC<IAlbumTileProps> = ({ album }) => {
     const imageSrc = API_URL + "/Images/800_";
 
     const [allTracks, setAllTracks] = useState<ITrack[]>([]);
-    const [pageIndex, setPageIndex] = useState(0);
-    const [hasMore, setHasMore] = useState(true);
 
     const [filter, setFilter] = useState<ITrackFilter>({
         PageIndex: 0,
@@ -26,17 +24,14 @@ const BestAlbum: React.FC<IAlbumTileProps> = ({ album }) => {
         AlbumId: album.id
     });
 
-    const { data, isFetching } = useGetTracksQuery(filter);
+    const { data } = useGetTracksQuery(filter);
 
     useEffect(() => {
         if (data) {
             setAllTracks(prevTracks => [...prevTracks, ...data.data]);
 
-            if (data.data.length < filter.PageSize) {
-                setHasMore(false);
-            } else {
-                setFilter(prev => ({ ...prev, PageIndex: prev.PageIndex + 1 }));
-
+            if (!filter.PageSize || data.data.length >= filter.PageSize) {
+                setFilter(prev => ({ ...prev, PageIndex: prev.PageIndex ? prev.PageIndex + 1 : 0 }));
             }
         }
     }, [data]);

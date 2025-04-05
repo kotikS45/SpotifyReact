@@ -37,7 +37,7 @@ const PlaylistPage: React.FC = () => {
 
   useEffect(() => {
     if (data) {
-      if (data.data.length < filter.PageSize) {
+      if (filter.PageSize && data.data.length < filter.PageSize) {
         setHasMore(false);
       }
 
@@ -61,7 +61,7 @@ const PlaylistPage: React.FC = () => {
 
   const handleScroll = () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 && !isFetching && hasMore) {
-      setFilter(prev => ({ ...prev, PageIndex: prev.PageIndex + 1 }));
+      setFilter(prev => ({ ...prev, PageIndex: prev.PageIndex ? prev.PageIndex + 1 : 0 }));
     }
   };
 
