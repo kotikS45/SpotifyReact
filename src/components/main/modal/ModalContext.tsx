@@ -1,9 +1,9 @@
 import React, { createContext, useState, ReactNode, useContext } from 'react';
 
-type ModalType = 'Profile' | 'Playlists' | null;
+//type ModalType = 'Profile' | 'Playlists' | null;
 
 interface ModalContextProps {
-    modalState: { type: ModalType; content: ReactNode } | null;
+    modalState: { type: string; content: ReactNode } | null;
     openModal: (type: string, content: React.ReactNode) => void;
     closeModal: () => void;
 }
@@ -11,9 +11,9 @@ interface ModalContextProps {
 const ModalContext = createContext<ModalContextProps | undefined>(undefined);
 
 export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [modalState, setModalState] = useState<{ type: ModalType; content: ReactNode } | null>(null);
+    const [modalState, setModalState] = useState<{ type: string; content: ReactNode } | null>(null);
 
-    const openModal = (type: ModalType, content: ReactNode) => {
+    const openModal = (type: string, content: ReactNode) => {
         setModalState({ type, content });
     };
 

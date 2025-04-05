@@ -8,7 +8,7 @@ interface HeaderLinkProps {
 
 const HeaderLink: React.FC<HeaderLinkProps> = ({ to, icon, activeCondition }) => {
   const { pathname } = useLocation();
-  const isActive = activeCondition ? activeCondition(pathname) : pathname.includes(to);
+  activeCondition ? activeCondition(pathname) : pathname.includes(to);
 
   return (
     <NavLink

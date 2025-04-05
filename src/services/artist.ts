@@ -25,12 +25,13 @@ export const artistApi = createApi({
       query: (artist) => {
         const formData = new FormData();
         formData.append("Name", artist.name);
-        formData.append("Image", artist.image); // додаємо зображення як файл
+        if (artist.image)
+          formData.append("Image", artist.image);
     
         return {
           url: "create",
           method: "POST",
-          body: formData,  // відправляємо як FormData
+          body: formData,
         };
       },
       // query: (artist) => ({

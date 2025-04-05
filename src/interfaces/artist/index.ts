@@ -10,7 +10,7 @@ export interface IArtist {
 
 export interface IArtistCreate {
   name: string,
-  image: File
+  image?: File
 }
 
 export interface IArtistUpdate {

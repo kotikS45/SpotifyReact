@@ -7,7 +7,7 @@ import { useForgotPasswordMutation } from "services/user";
 const ForgotPasswordPage: React.FC = () => {
     const [email, setEmail] = React.useState("");
 
-    const [forgotPassword, { isLoading, isSuccess, error }] = useForgotPasswordMutation();
+    const [forgotPassword, { isLoading, isSuccess }] = useForgotPasswordMutation();
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();

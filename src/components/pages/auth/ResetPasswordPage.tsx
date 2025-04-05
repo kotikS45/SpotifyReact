@@ -9,7 +9,7 @@ const ResetPasswordPage: React.FC = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const [resetPassword, { isLoading, isSuccess, error }] = useResetPasswordMutation();
+    const [resetPassword, { isLoading }] = useResetPasswordMutation();
     const location = useLocation();
     const navigate = useNavigate();
 
